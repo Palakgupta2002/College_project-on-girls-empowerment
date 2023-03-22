@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="form">
+        <form >
+        <div>
+            <h1 style="margin-left: 210px;">SIGN UP</h1>
+        <label for="Name">Name:</label>
+        <input style="margin-left: 109px;" type="text" placeholder="Enter your Name" required="true">
+        </div>
+        <div>
+        <label for="Roll no.">Roll no.:</label>
+        <input  style="margin-left: 99px;" type="number" placeholder="Enter your Roll no." max="12" required="true">
+        </div>
+        <div>
+        <label for="cars">Choose a Branch:</label>
+     <select  style="margin-left: 34px;" name="branch" placeholder="Choose your branch" id="branch" required="true">
+        <option value="CSE">CSE</option>
+        <option value="Chemical">Chemical</option>
+        <option value=" Civil"> Civil</option>
+        <option value="Mechanical">Mechanical</option>
+        <option value="Agricultural">Agricultural</option>
+        <option value="Biomedical">Biomedical</option>
+        <option value=" Electrical and Electronics"> Electrical and Electronics</option>
+        <option value=" Biomedical"> Biomedical</option>
+     </select>
+       </div>
+       <div>
+        <label for="Year">Year:</label>
+        <input style="margin-left: 117px;" type="number" placeholder="Enter your Year" min="0" max="4" required="true">
+        </div>
+        <div>
+        <label for="email">Email-id:</label>
+        <input style="margin-left: 93px;" type="email" placeholder="Enter your Email-id" required="true" >
+        </div>
+        <div>
+        <label for="Mobile">Mobile:</label>
+        <input  style="margin-left: 105px;" type="tel" placeholder="Enter your mobile no." max="10" required="true">
+        </div>
+        <div>
+        <label for="Alternate">Alt Mobile no.:</label>
+        <input style="margin-left: 52px;" type="number" placeholder="Enter your Alternate mobile no" max="12" required="true">
+        </div>
+        <button id="submit"> Submit</button>
+        </form>
+        
+    </div>
+    
+</body>
+</html>

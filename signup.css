@@ -1,0 +1,50 @@
+body{
+    font-family: cursive;
+    background-image: url("./girls.jpg  ");
+    background-repeat: no-repeat;
+    background-size: 100% 140%;
+   
+}
+#form
+{
+    width: 550px;
+    height: 600px;
+    justify-content: center;
+    align-items: center;
+    margin-left:400px;
+   background-color: rgb(245,188,165);
+    border: 2px solid black;
+    box-shadow: rgba(114, 114, 165, 0.2) 0px 7px 29px 0px;
+   
+    
+
+}
+input{
+    width:300px;
+    height: 20px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    text-align: center;
+    margin-top: 30px;
+    
+    
+}
+select{
+    width:302px;
+    height: 24px;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+    text-align: center;
+    margin-top: 30px;
+
+}
+label
+{
+    padding-left: 10px;
+}
+#submit{
+    margin-left: 100px;
+    margin-top: 50px;
+}
