@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,11 +16,11 @@
         </div>
         <div>
         <label for="Roll no.">Roll no.:</label>
-        <input  style="margin-left: 99px;" type="number" placeholder="Enter your Roll no." max="12" required="true">
+        <input  style="margin-left: 99px;" type="Text" placeholder="Enter your Roll no." max="12" required="true">
         </div>
         <div>
         <label for="cars">Choose a Branch:</label>
-     <select  style="margin-left: 34px;" name="branch" placeholder="Choose your branch" id="branch" required="true">
+     <select  style="margin-left: 31px;" name="branch" placeholder="Choose your branch" id="branch" required="true">
         <option value="CSE">CSE</option>
         <option value="Chemical">Chemical</option>
         <option value=" Civil"> Civil</option>
@@ -46,12 +45,41 @@
         </div>
         <div>
         <label for="Alternate">Alt Mobile no.:</label>
-        <input style="margin-left: 52px;" type="number" placeholder="Enter your Alternate mobile no" max="12" required="true">
+        <input style="margin-left: 52px;" type="tel" placeholder="Enter your Alternate mobile no" max="10" required="true">
         </div>
+        <div id="uploadphoto">
+
+        </div>
+        <div id="uploadidentycard">
+
+        </div>
+        <div id="password">
+        <label for="password">password:</label>
+        <input  style="margin-left: 88px;" type="password" placeholder="Enter your password" max="10" required="true">
+        </div>
+        <div id="confirmpassword">
+            <label for="Mobile">confirm password:</label>
+        <input  style="margin-left: 25px;" type="password" placeholder="Enter your Confirm Password" max="10" required="true">
+
+        </div>
+        <div style="display: flex;">
+            <label style="position: relative; top: 88px;"  for="choose">Choose a Photo :</label>
+            <input  type="file" id="image" name="img" accept="image/*">
+            <div id="imagepicture"></div>
+        </div>
+        <div style="display: flex;">
+            <label style="position: relative; top: 88px;"  for="choose">Choose a identy :</label>
+            <input  type="file" id="image" name="img" accept="file ">
+        </div>
+
+        <div id="buttondiv">
         <button id="submit"> Submit</button>
+        <button id="submit"> Reset</button>
+    </div>
         </form>
         
     </div>
     
 </body>
 </html>
+<script src="signup.js"></script>

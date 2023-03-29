@@ -1,50 +1,80 @@
-body{
-    font-family: cursive;
-    background-image: url("./girls.jpg  ");
-    background-repeat: no-repeat;
-    background-size: 100% 140%;
-   
-}
-#form
-{
-    width: 550px;
-    height: 600px;
-    justify-content: center;
-    align-items: center;
-    margin-left:400px;
-   background-color: rgb(245,188,165);
-    border: 2px solid black;
-    box-shadow: rgba(114, 114, 165, 0.2) 0px 7px 29px 0px;
-   
-    
-
-}
-input{
-    width:300px;
-    height: 20px;
-    outline: none;
-    border: none;
-    border-bottom: 2px solid black;
-    text-align: center;
-    margin-top: 30px;
-    
-    
-}
-select{
-    width:302px;
-    height: 24px;
-    outline: none;
-    border: none;
-    border-bottom: 2px solid black;
-    text-align: center;
-    margin-top: 30px;
-
-}
-label
-{
-    padding-left: 10px;
-}
-#submit{
-    margin-left: 100px;
-    margin-top: 50px;
-}
+#imagepicture {
+    max-width: 300px;
+    max-height: 300px;
+  }
+  body{
+      font-family: cursive;
+      
+      background-repeat: no-repeat;
+      background-size: 100% 140%;
+     
+  }
+  #form
+  {
+      width: 600px;
+      height: 1000px;
+      justify-content: center;
+      align-items: center;
+      margin-left:400px;
+     background-color: rgb(245,188,165);
+      border: 2px solid black;
+      box-shadow: rgba(114, 114, 165, 0.2) 0px 7px 29px 0px;
+     
+      
+  
+  }
+  input{
+      width:300px;
+      height: 20px;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid black;
+      text-align: center;
+      margin-top: 30px;
+      
+      
+  }
+  select{
+      width:305px;
+      height: 24px;
+      outline: none;
+      border: none;
+      border-bottom: 2px solid black;
+      text-align: center;
+      margin-top: 30px;
+  
+  }
+  label
+  {
+      padding-left: 10px;
+  }
+  #submit{
+      margin-left: 66px;
+      margin-top: 50px;
+      height:45px;
+      width:200px;
+      font-size:30px;
+      font-weight: 500;
+      border: none;
+      background-color: rgb(235, 130, 147);
+      font-family: cursive;
+  }
+  #buttondiv{
+      display: flex;
+  }
+  #image
+  {
+      border: none;
+      margin-left: 42px;
+      margin-top: 90px;
+      margin-bottom: 30px;
+  }
+  #imagepicture
+  {
+      height:103px;
+      width:100px;
+      border: 2px solid black;
+      position: relative;
+      top: 50px;
+      right: 95px;
+  }
