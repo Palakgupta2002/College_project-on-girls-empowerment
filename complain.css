@@ -1,0 +1,144 @@
+*
+{
+    margin: 0;
+    
+    padding: 0;
+}
+.start
+{
+    display:flex;
+}
+.nav
+
+{
+    display: flex;
+    width: 90px; 
+   background-color: #111111;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    left: 0px;
+    z-index: 1000;
+    
+}
+.left
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+.left a
+{
+    text-decoration: none;
+    font-family: 'roboto';
+    font-size: 7px;
+    padding-top: 3px;
+    color: aliceblue;
+}
+.left i
+{
+    font-size: 27px;
+   
+}
+.home
+{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+}
+.home:hover
+{
+    background-color: thistle;
+    opacity: 0.5;
+}
+
+.right
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 230px;
+    position: relative;
+    bottom: 40px;
+}
+.right:hover
+{
+    background-color: thistle;
+   padding: 5px;
+    opacity: 0.5;
+}
+.right a
+{
+    text-decoration: none;
+    font-size: 7px;
+    color: aliceblue;
+    padding-top: 3px;
+}
+.right i
+{
+    font-size: 27px;
+}
+
+.section
+{
+    margin-left: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 91.3%;
+    height: 100%;
+   
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-top: 7px;
+   
+}
+.part-1
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.part-1 .logo
+{
+   
+   
+    margin-left: 20px;
+    width: 118px;
+    height:107px;
+    
+}
+.part-1 .women
+{
+   
+   
+    margin-right: 30px;
+    width: 118px;
+    height:107px;
+    
+}
+.part-1 p
+{
+    color: #270b9d;
+    font-family: 'roboto';
+    font-weight: 700;
+    text-align: center;
+    font-size: 25px;
+}
+.register{
+    background-color: rgb(233, 202, 213);
+    width: 1250px;
+    height: 200px;
+    margin-top: 40px;
+    margin-left: 100px;
+}
+.registerspan{
+    font-size: 40px;
+    position: absolute;
+    padding-left: 100px;
+    padding-top: 60px;
+    font-weight: bolder;
+    color: rgb(226, 121, 156);
+}
