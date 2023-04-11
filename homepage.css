@@ -84,10 +84,9 @@
 .section
 {
     margin-left: 100px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     width: 91.3%;
     height: 100%;
-   
     border-radius: 10px;
     margin-right: 10px;
     margin-top: 7px;
@@ -173,11 +172,10 @@
 {
     margin-left: 100px;
     margin-right: 10px;
-    
     margin-top: 10px;
     width: 91.3%;
     padding-bottom: 90px;
-   background-color: #ececec;
+    background-color: #ececec;
 }
 .part-3 h4
 {

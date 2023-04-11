@@ -84,13 +84,12 @@
 .section
 {
     margin-left: 100px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     width: 91.3%;
     height: 100%;
-   
     border-radius: 10px;
     margin-right: 10px;
     margin-top: 7px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
    
 }
 .part-1
@@ -142,3 +141,73 @@
     font-weight: bolder;
     color: rgb(226, 121, 156);
 }
+.firstinputbox{
+    display: flex;
+    column-gap: 60px;
+    
+}
+.Complainant_form{
+    margin-top: 40px;
+    margin-left: 100px;
+}
+.Complainant_form input{
+    width:300px;
+    position: relative;
+    top: -16px;
+    height: 25px;
+    padding-left: 10px;
+}
+.Complainant_form p{
+    font-size: 22px;
+}
+.Complainant_form span{
+    font-size: 30px;
+}
+.inputbox1{
+    position: relative;
+    top: 30px;
+}
+.Organization_form {
+    margin-top: 40px;
+    margin-left: 100px;
+    
+}
+
+.span{
+    font-size: 30px;
+    background-color:rgb(233, 202, 213);
+    width: 1250px;
+    
+}
+.desc{
+    width: 800px;
+    height: 200px;
+    top: 10px;
+    margin-left: 100px;
+position: relative;
+
+}
+.span1{
+    font-size: 22px;
+    width: 1250px;
+    margin-top: 40px;
+    margin-left: 100px;
+}
+.desc ::placeholder{
+    position: relative;
+    padding-top: -70px;
+}
+.desc input{
+    position: relative;
+    top: -90px;
+}
+.footer{
+    width: 1250px;
+    height: 200px;
+    background-color:rgb(233, 202, 213);
+    position: relative;
+    top:50px;
+    margin-left: 100px;
+}
+
+
