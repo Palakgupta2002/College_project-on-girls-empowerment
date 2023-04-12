@@ -128,7 +128,7 @@
 }
 .register{
     background-color: rgb(233, 202, 213);
-    width: 1250px;
+    width: 92%;
     height: 200px;
     margin-top: 40px;
     margin-left: 100px;
@@ -176,7 +176,7 @@
 .span{
     font-size: 30px;
     background-color:rgb(233, 202, 213);
-    width: 1250px;
+    width: 1237px;
     
 }
 .desc{
@@ -189,7 +189,7 @@ position: relative;
 }
 .span1{
     font-size: 22px;
-    width: 1250px;
+    width: 92%;
     margin-top: 40px;
     margin-left: 100px;
 }
@@ -202,7 +202,7 @@ position: relative;
     top: -90px;
 }
 .footer{
-    width: 1250px;
+    width: 92%;
     height: 200px;
     background-color:rgb(233, 202, 213);
     position: relative;
