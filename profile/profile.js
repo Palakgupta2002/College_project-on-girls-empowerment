@@ -1,19 +1,19 @@
-const fileInput = document.getElementById("image");
-const imagePreview = document.getElementById("imagepicture");
+const avatarInput = document.getElementById('avatar');
+const imageHolder = document.getElementById('imageHolder');
+const profileDiv = document.getElementById('profile');
 
-fileInput.addEventListener("change", function() {
-  const file = this.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.addEventListener("load", function() {
-      const imageData = reader.result;
-      imagePreview.innerHTML = `<img width="100px"  src="${imageData}"/>`;
-    //   imagePreview.style.width="200px";
-      
-      
-    });
-    
-  }
-  
+
+avatarInput.addEventListener('change', function(e) {
+  const file = e.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    imageHolder.innerHTML="";
+avatarInput.innerHTML="";
+    profileDiv.style.backgroundSize = 'cover'; 
+    profileDiv.style.backgroundPosition = 'center'; 
+    imageHolder.style.backgroundImage = `url(${e.target.result})`;
+  };
+
+  reader.readAsDataURL(file);
 });

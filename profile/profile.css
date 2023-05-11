@@ -1,5 +1,48 @@
-#image{
+body{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+#imageHolder{
     width:300px;
-    height: 300px;
-    background-image: url("./profile.png");
+    height:300px;
+    border-radius: 50%;
+    border: 1px solid grey ;
+    background-color: rgb(10, 10, 10);
+    margin-top: 30px;
+    margin-left: 50px;
+   
+   
+}
+#avatar{
+   
+    font-size: 15px;     
+
+}
+#maindiv{
+    
+}
+#profile{
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+    background-color:grey ;
+   margin-top: 30px;
+   margin-left: 100px;
+}
+#profileinput{
+    margin-left: 100px;
+    margin-top: 20px;
+}
+#profile1{
+    width: 250px;
+    height: 130px;
+    border-radius: 50%;
+    background-color: grey;
+    margin-top: 10px;
+    margin-left: 24px;
+
 }
