@@ -14,9 +14,24 @@ body{
     background-color: rgb(10, 10, 10);
     margin-top: 30px;
     margin-left: 50px;
+    animation: borderAnimation 3s infinite;
    
    
 }
+@keyframes borderAnimation {
+    0% {
+      border-radius: 0;
+      background-color: black;
+    }
+    50% {
+      border-radius: 50%;
+      background-color: aliceblue;
+    }
+    100% {
+      border-radius: 0;
+      background-color: #302b63;
+    }
+  }
 #avatar{
    
     font-size: 15px;     
@@ -46,3 +61,44 @@ body{
     margin-left: 24px;
 
 }
+.imageholder{
+    background-Size :cover; 
+    background-Position:center;
+    transform-origin: 18px 18px;
+    transition: transform 0.45s ease;
+    transform: rotate(0);
+
+
+}
+#profileinput {
+    position: relative;
+   
+    margin-top: 30px;
+    margin-left: 50px;
+  }
+
+  #profileinput input[type="file"] {
+    display: none;
+  }
+
+  #profileinput .image-preview {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .profileinput .edit-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-image: url("/College_project-on-girls-empowerment/images/pencil-icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+  
