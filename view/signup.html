@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="main">
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+		<div class="signup">
+			<form action="/submit" method="POST">
+				<label for="chk" aria-hidden="true">Register</label>
+				<div id="inputbox">
+		
+
+					<input name="name" type="text" pattern="[A-Za-z\s]+" placeholder="Name" required="">
+                    <input name="father" type="text" pattern="[A-Za-z\s]+" placeholder="Father's Name" required="">
+					<input name="mother" type="text" pattern="[A-Za-z\s]+" placeholder="Mother's Name" required="">
+					<input name="email" type="email" placeholder="Email" required="">
+					<input name="mobile" type="tel" pattern="[6-9]\d{9}" placeholder="Mobile No." required>
+                    <input name="alternativemobile"  pattern="[6-9]\d{9}" type="tel" placeholder="Alternative Mobile No." required="">
+					<input name="enrollment" type="text"  placeholder="Enrollment Number" required>
+                    <input name="admissionyear" placeholder="Addmission_Year" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />
+					<input name="department" type="text" placeholder="Department" required="">
+					
+					<select name="Branch" id="branch" required>
+						<option value="" disabled selected>Select Branch</option>
+						<option value="MCA">MCA</option>
+						<option value="MBA">MBA</option>
+						<option value="Electrical">Electrical</option>
+						<option value="Mechanical">Mechanical</option>
+						<option value="Civil">Civil</option>
+						<option value="Computer Science">Computer Science</option>
+						<option value="Information Technology">Information Technology</option>
+						<option value="Electronics">Electronics</option>
+					</select>
+					<input id="password" name="password" type="text" placeholder="Password" required="">
+					<input id="cnfrmpswrd" name="confirmpassword" type="text" placeholder=" Confirm Password" required="">
+				</div>
+				<div id="btndiv">
+				<button>Submit</button>
+			    </div>
+			</form>
+		</div>
+
+		<div class="login">
+			<form action="/login" method="POST">
+				<label for="chk" aria-hidden="true">Login</label>
+				<div id="logininputbox">
+				<input type="email" name="email" placeholder="Email" required="">
+				<input type="text"  name="enrollment" placeholder="Enrollment" required="">
+				<input type="password" name="password" placeholder="Password" required="">
+			    </div>
+				<button>Login</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
+<script>
+	
+
+</script>

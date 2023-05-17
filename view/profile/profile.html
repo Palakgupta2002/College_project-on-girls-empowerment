@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/profile.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+</head>
+<body>
+<div id="profile">
+    <div class="pro">
+      <div class="left">
+       <img class="image" id="images" src="profile.webp">
+
+       <!------------------------------------------------------------------------>
+       <label for="input"><img class="camera" src="camera.png"></label>
+       <input type="file" action="image/jpg,image/jpeg,image/png" id="input">
+       <p id="name"></p>
+       <button onclick=""></button>  
+        </div>
+      <div class="right">
+       <p class="info">INFORMATION</p>
+
+       <div class="EP">
+        <div class="email">
+        <p>Father's name</p>
+        <input type="text" value="" id="father">
+        </div>
+        <div class="phone">
+            <p>Mother's name</p>
+            <input type="text" value="" id="mother">
+        </div>
+      </div>
+      <div class="EP">
+        <div class="email">
+        <p>Email</p>
+        <input type="text" value="" id="email">
+        </div>
+        <div class="phone">
+            <p>Phone</p>
+            <input type="text" value="" id="mobile">
+        </div>
+      </div>
+      <div class="EP">
+        <div class="email">
+        <p>Department</p>
+        <input type="text" value="" id="department">
+        </div>
+        <div class="phone">
+            <p>Branch</p>
+            <input type="text" value="MCA" >
+          
+        </div>
+      </div>
+      <div class="EP">
+        <div class="email">
+        <p>Enrollment No.</p>
+        <input type="text" value="" id="enrollment">
+        </div>
+        <div class="phone">
+            <p>Admission Year</p>
+            <input type="text" value="" id="admission">
+        </div>
+      </div>
+      </div>
+    </div>
+</div>
+<script>
+  let input=document.getElementById('input');
+  let image=document.getElementById('images');
+
+  input.onchange=function()
+  {
+  image.src=URL.createObjectURL(input.files[0]);
+};
+  fetch('/profileData').then((data)=>data.json()).then((el)=>{if(el !== undefined && el){showdata(el)}});
+  function showdata(data){
+    if(data?.user !== undefined && data){
+      document.getElementById("enrollment").value=data?.user?.enrollment;
+      document.getElementById("father").value=data?.user?.father;
+      document.getElementById("name").innerText=data?.user?.name;
+      document.getElementById("mother").value=data?.user?.mother;
+      document.getElementById("admission").value=data?.user?.admissionyear;
+      document.getElementById("Branch").value=data?.user?.Branch;
+      document.getElementById("email").value=data?.user?.email;
+      document.getElementById("department").value=data?.user?.department;
+      document.getElementById("mobile").value=data?.user?.mobile;
+      
+}
+   
+   
+  }
+  fetch('/profileData').then((data)=>data.json()).then((el)=>{console.log(el)})
+  showdata();
+</script>
+</body>
+</html>
