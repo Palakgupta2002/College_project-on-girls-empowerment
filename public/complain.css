@@ -1,0 +1,268 @@
+body{
+	margin: 0;
+	padding: 0;
+	
+}
+
+.start
+{
+    display:flex;
+}
+.nav
+
+{
+    display: flex;
+    width: 90px; 
+   background-color: #111111;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    left: 0px;
+    
+    z-index: 1000;
+    height: 580px;
+    background: linear-gradient(to bottom, #0f0c39, #302b90, #24243e);
+}
+.left
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+.left a
+{
+    text-decoration: none;
+    font-family: 'roboto';
+    font-size: 7px;
+    padding-top: 3px;
+    color: aliceblue;
+}
+.left i
+{
+    font-size: 27px;
+   
+}
+.home
+{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+}
+.home:hover
+{
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    opacity: 0.5;
+    padding: 5px;
+}
+
+.right
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 270px;
+    position: relative;
+    bottom: 40px;
+}
+.right:hover
+{
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+   padding: 15px;
+   margin-bottom: 10px;
+    opacity: 0.5;
+}
+.right a
+{
+    text-decoration: none;
+    font-size: 7px;
+    color: aliceblue;
+    padding-top: 3px;
+}
+.right i
+{
+    font-size: 27px;
+}
+
+.section
+{
+    margin-left: 100px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 91.3%;
+    
+   height: 100%;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-top: 7px;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);;
+}
+
+.part-1
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  /*  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);;*/
+}
+.part-1 .logo
+{
+   
+   
+    margin-left: 20px;
+    width: 118px;
+    height:107px;
+    
+}
+.part-1 .women
+{
+   
+   
+    margin-right: 30px;
+    width: 118px;
+    height:107px;
+    
+}
+.part-1 p
+{
+    color:white;
+    font-family: 'roboto';
+    font-weight: 700;
+    text-align: center;
+    font-size: 25px;
+}
+.part-2
+{
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    
+    margin-left: 100px;
+    margin-right: 10px;
+    margin-top: -20px;
+    padding-bottom: 20px;
+    
+}
+.part-2 h3
+{
+    text-align: center;
+    font-size: 28px;
+    font-family: 'roboto';
+   padding: 20px;
+    color: white;
+}
+.part-2 h4
+{
+    text-align: left;
+    font-size: 28px;
+    font-family: 'roboto';
+   padding-left: 50px;
+    color: white;
+}
+
+.victim 
+{
+    display: flex;
+    justify-content: space-around;
+}
+.victim p
+{
+    font-size: 20px;
+    font-family: 'roboto';
+   font-weight: 600;
+    color: white;
+}
+.victim input
+{
+    width: 300px;
+    height: 50px;
+    padding-left: 20px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    font-size: 15px;
+    font-family: 'roboto';
+}
+.part-2 h5
+{
+    text-align: left;
+    font-size: 28px;
+    font-family: 'roboto';
+   padding-left: 50px;
+    color: white;
+}
+
+.accused 
+{
+    display: flex;
+    justify-content: space-around;
+}
+.accused p
+{
+    font-size: 20px;
+    font-family: 'roboto';
+   font-weight: 600;
+    color: white;
+}
+.accused input
+{
+    width: 300px;
+    height: 50px;
+    padding-left: 20px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    font-size: 15px;
+    font-family: 'roboto';
+}
+.accuse p
+{
+    font-size: 20px;
+    font-family: 'roboto';
+   font-weight: 600;
+    color: white;
+    margin-left: 30px;
+    margin-top: 50px;
+}
+.accuse .message
+{
+    
+  border: none;
+  padding: 15px;
+  font-family: 'roboto';
+  margin-left: 5px;
+  outline: none;
+  font-size: 15px;
+  border-radius: 8px;
+  color: aliceblue;
+  border: 1px solid white;
+  background: none;
+  background: none;
+  background-color: transparent;
+    
+}
+
+
+
+.part-2 button
+{
+    margin-left: 320px;
+    padding: 20px;
+    margin-top: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 500px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);;
+    color: aliceblue;
+    font-size: 20px;
+}
+.part-2 button:hover
+{
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+   padding-left: 52px;
+   padding-right: 52px;
+   padding: 22px;
+}
