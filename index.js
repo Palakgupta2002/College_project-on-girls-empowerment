@@ -4,6 +4,7 @@ const path = require('path')
 const fs = require('fs')
 const bcrypt = require('bcrypt');
 var bodyParser = require('body-parser')
+const multer=require("multer")
 const app = express()
 var enrollment1;
 mongoose
@@ -194,14 +195,7 @@ app.get('/profileData', (req, res) => {
       mobile: user.mobile,
       father: user.father,
     };
-    var inputImage = document.getElementById("input");
-
-    // Assuming `addImage()` is a function that retrieves the uploaded image data
-    var imageData = addImage();
-    
-    userData.inputimage = imageData;
-
-    res.json({ user: userData });
+     res.json({ user: userData });
   });
 });
 
