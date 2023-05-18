@@ -50,7 +50,7 @@
         </div>
         <div class="phone">
             <p>Branch</p>
-            <input type="text" value="MCA" >
+            <input type="text" value="MCA" id="Branch">
           
         </div>
       </div>
@@ -68,13 +68,7 @@
     </div>
 </div>
 <script>
-  let input=document.getElementById('input');
-  let image=document.getElementById('images');
-
-  input.onchange=function()
-  {
-  image.src=URL.createObjectURL(input.files[0]);
-};
+  
   fetch('/profileData').then((data)=>data.json()).then((el)=>{if(el !== undefined && el){showdata(el)}});
   function showdata(data){
     if(data?.user !== undefined && data){
@@ -87,12 +81,13 @@
       document.getElementById("email").value=data?.user?.email;
       document.getElementById("department").value=data?.user?.department;
       document.getElementById("mobile").value=data?.user?.mobile;
-      
+     
 }
+
    
    
   }
-  fetch('/profileData').then((data)=>data.json()).then((el)=>{console.log(el)})
+  // fetch('/profileData').then((data)=>data.json()).then((el)=>{console.log(el)})
   showdata();
 </script>
 </body>

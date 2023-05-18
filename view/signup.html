@@ -24,8 +24,8 @@
 					<input name="enrollment" type="text"  placeholder="Enrollment Number" required>
                     <input name="admissionyear" placeholder="Addmission_Year" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />
 					<input name="department" type="text" placeholder="Department" required="">
-					
-					<select name="Branch" id="branch" required>
+
+					<select onchange="changePlaceholderColor()" name="Branch" id="branch" required>
 						<option value="" disabled selected>Select Branch</option>
 						<option value="MCA">MCA</option>
 						<option value="MBA">MBA</option>
@@ -39,11 +39,15 @@
 					<input id="password" name="password" type="text" placeholder="Password" required="">
 					<input id="cnfrmpswrd" name="confirmpassword" type="text" placeholder=" Confirm Password" required="">
 				</div>
+				
 				<div id="btndiv">
+					
+				<input name="image" type="file" action="image/jpg,image/jpeg,image/png" id="input">
 				<button>Submit</button>
-			    </div>
+				</div>
 			</form>
 		</div>
+		
 
 		<div class="login">
 			<form action="/login" method="POST">
@@ -61,6 +65,9 @@
 
 </html>
 <script>
-	
+	function changePlaceholderColor() {
+  var selectElement = document.getElementById('branch');
+  selectElement.style.color = selectElement.value ? 'white' : '#999999';
+}
 
 </script>

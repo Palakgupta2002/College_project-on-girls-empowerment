@@ -10,7 +10,7 @@ body{
 }
 .main{
 	width: 650px;
-	height: 600px;
+	height: 640px;
 	background: red;
 	overflow: hidden;
 	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
@@ -70,24 +70,52 @@ label{
     background: transparent;
 	color: #eee;
 }
-/* #branch{
+#branch {
 	width: 80%;
 	height: 20px;
-	margin: 20px auto;
+	/* margin: 20px auto;
 	padding: 10px;
 	border: none;
 	outline: none;
 	border-radius: 0px;
-	background-color: none;
 	border-bottom: 0.5px solid white;
-    background: transparent;
 	color: white;
+	margin-top: 40px;
+	color: black; */
+	outline: none;
+	border: none;
+	color: rgb(134, 125, 125);
+	border-bottom: 0.5px solid white;
+	
+	
+	border-radius: 0px;
+	
+	margin-top: 40px;
+	background-color: #2e2e79;
+	border: none;
 
 
-} */
-select option{
-	color: #23233c;
-}
+  }
+  
+  #branch option[disabled]:first-child {
+	color: white;
+  }
+  #branch option {
+	color:black;
+  }
+  #branch:valid option:first-child {
+	color: #ff0000;
+  }
+  
+  
+  /* By removing the background: transparent; line, the select options should be visible when you apply this CSS to your <select> element with the ID "branch". */
+  
+  
+  
+  
+  
+  
+  
 select::placeholder{
 	color: #fff;
 }
@@ -95,14 +123,14 @@ select::placeholder{
 button{
 	width: 60%;
 	height: 40px;
-	margin: 10px auto;
+	margin-left: -150px;
 	justify-content: center;
 	display: block;
 	color: #fff;
 	background: #573b8a;
 	font-size: 1em;
 	font-weight: bold;
-	margin-top: 20px;
+	margin-top: 50px;
 	outline: none;
 	border: none;
 	border-radius: 5px;
@@ -118,6 +146,9 @@ button:hover{
 	border-radius: 60% / 10%;
 	transform: translateY(-180px);
 	transition: .8s ease-in-out;
+}
+.login button{
+	margin-left: 130px;
 }
 .login label{
 	color: #573b8a;

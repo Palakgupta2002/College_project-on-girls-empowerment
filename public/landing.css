@@ -1,0 +1,285 @@
+.part-1
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+    
+    background: linear-gradient(to bottom, #030114);
+   height: 180px;
+}
+.part-1 .logo
+{
+   
+   
+    margin-left: 20px;
+    width: 180px;
+    height:140px;
+    
+}
+.part-1 .women
+{
+   
+   
+    margin-right: 30px;
+    width: 150px;
+    height:140px;
+    padding-left: 10px;
+}
+.part-1 p
+{
+    color:white;
+    font-family: 'roboto';
+    font-weight: 700;
+    text-align: center;
+    font-size: 25px;
+}
+.section
+{
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+    height: 370px;
+    margin-bottom: -60px;
+}
+.section p
+{
+    font-family: 'roboto';
+    font-size: 30px;
+    font-weight: 600;
+    color: aliceblue;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 150px;
+}
+.section span
+{
+    color: coral;
+    padding: 7px;
+    font-size: 39px;
+}
+
+.section img
+{
+    width: 220px;
+    height: 337px;
+    margin-top: 20px;
+    margin-right: 30px;
+    
+}
+
+.losign
+{
+    display: flex;
+    justify-content: space-evenly;
+   
+   
+   
+
+}
+.signup
+{
+    display: flex;
+    flex-direction: column;
+    border: 5px solid white;
+    padding: 20px;
+    background-color: coral;
+    width: 150px;
+    margin-right: -270px;
+    margin-left: 80px;
+}
+.signup:hover
+{
+    background-color: chocolate;
+}
+.signup a
+{
+    text-decoration: none;
+}
+.signup .sign
+{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-family: 'roboto';
+    padding-top: 10px;
+    font-weight: 600;
+    text-align: center;
+
+}
+.signup i
+{
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.login
+{
+    display: flex;
+    flex-direction: column;
+    border: 5px solid white;
+    padding: 27px;
+    padding-left: 34px;
+    padding-right: 34px;
+    background-color: chocolate;
+    width: 120px;
+    margin-right: 100px;
+
+}
+.login:hover
+{
+    background-color: coral;
+   
+}
+.login a
+{
+    text-decoration: none;
+}
+.login .log
+{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-family: 'roboto';
+    padding-top: 10px;
+    font-weight: 600;
+    text-align: center;
+
+}
+.login i
+{
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+footer
+{
+    background-color:#302b63;
+    height: 300px;
+    margin-top: -130px;
+    position: inherit;
+}
+
+footer h5
+{
+font-family: 'roboto';
+font-size: 30px;
+
+text-align: center;
+position: relative;
+top:150px;
+color: white;
+}
+
+.social
+{
+    padding-top: 130px;
+    text-align: center;
+}
+
+.social .face
+{
+    color:white;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 25px;
+    margin: 7px;
+    background-color:#3b5998;
+   
+    
+}
+.social .face:hover
+{
+    background-color:#3b5998;
+    padding:10px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.social .twi
+{
+    color:white;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 8px;
+    
+    font-size: 25px;
+    margin: 7px;
+    background-color:#00aced;
+  
+  
+}
+.social .twi:hover
+{
+    background-color:#00aced;
+    padding:10px;
+    
+}
+.social .insta
+{
+    color:white;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 8px;
+   
+    font-size: 25px;
+    margin: 7px;
+   
+   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+  
+}
+.social .insta:hover
+{
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+  
+    padding:10px;
+    
+}
+.social .youtube
+{
+    color:white;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 8px;
+    background-color: red;
+    font-size: 25px;
+    margin: 7px;
+    
+  
+  
+}
+.social .youtube:hover
+{
+    background-color:red;
+    padding:10px;
+    
+}
+.social .linke
+{
+    color:white;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 8px;
+    background-color: #0A66C2;
+    font-size: 25px;
+    margin: 7px;
+    
+}
+.social .linke:hover
+{
+    background-color:#0a66c2;
+    padding:10px;
+    
+}

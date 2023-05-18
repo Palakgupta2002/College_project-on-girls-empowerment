@@ -45,8 +45,8 @@ app.post('/submit', (req, res) => {
   var name = req.body.name;
   var email = req.body.email;
   var password = req.body.password;
-  var fathername=req.body.fathername;
-  var mothername=req.body.mothername;
+  var father=req.body.father;
+  var mother=req.body.mother;
   var alternativeemail=req.body.alternativeemail;
   var alternativemobile=req.body.alternativemobile;
   var mobile=req.body.mobile;
@@ -54,6 +54,8 @@ app.post('/submit', (req, res) => {
   var admissionyear=req.body.admissionyear;
   var department=req.body.admissionyear;
   var confirmpassword=req.body.confirmpassword;
+  var image=req.body.image;
+  const Branch = req.body.Branch;
   enrollment1=req.body.enrollment;
   // Check if user with the same email already exists
   db.collection('users').findOne({ enrollment:enrollment }, (err, user) => {
@@ -79,13 +81,15 @@ app.post('/submit', (req, res) => {
         email: email,
         mobile:mobile,
         password: hashedPassword, // Store the hashed password
-        fathername:fathername,
-        mothername:mothername,
+        father:father,
+        mother:mother,
         alternativeemail:alternativeemail,
         alternativemobile:alternativemobile,
         enrollment:enrollment,
         admissionyear:admissionyear,
         department:department,
+        Branch:Branch ,
+         image:image,
         confirmpassword:hashedPassword
       };
       console.log(password,confirmpassword);
@@ -174,6 +178,7 @@ app.get('/profile', (req, res) => {
     return res.sendFile(filePath);
   });
 });
+
 app.get('/profileData', (req, res) => {
   db.collection('users').findOne({enrollment:enrollment1}, (err, user) => {
     if (err) {
@@ -194,7 +199,11 @@ app.get('/profileData', (req, res) => {
       admissionyear: user.admissionyear,
       mobile: user.mobile,
       father: user.father,
+      image:user.image,
+      Branch:user.Branch,
+      mother:user.mother,
     };
+    
      res.json({ user: userData });
   });
 });
@@ -259,6 +268,12 @@ app.post('/complain', (req, res) => {
     return res.status(200).send('<script>alert("' + alertMessage + '"); window.location.href="/complainpage";</script>');
   });
 });
+
+
+
+
+
+
 // Function to generate a unique ID
 function generateUniqueId() {
   // Generate a random numeric ID with 12 characters
