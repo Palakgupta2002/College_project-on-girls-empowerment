@@ -31,7 +31,7 @@ app.use(
 )
 
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/view/signup.html')
+  res.sendFile(__dirname + '/view/landing/landing.html')
 })
 var db = mongoose.connection
  const collection = db.collection('users');
@@ -114,6 +114,7 @@ app.post('/submit', (req, res) => {
     });
   });
 });
+
 
 
 
@@ -268,6 +269,36 @@ app.post('/complain', (req, res) => {
     return res.status(200).send('<script>alert("' + alertMessage + '"); window.location.href="/complainpage";</script>');
   });
 });
+//admin Api
+app.get('/admindash',(req,res)=>{
+  fs.readFile(__dirname+'/view/admin/admin.html',(err,data)=>{
+    if(err){
+      console.log("Error Occured",err)
+      return res.status(500).send('internal error');
+    }
+    res.sendFile(__dirname+'/view/admin/admin.html');
+ })
+})
+//signup Api
+app.get('/signup',(req,res)=>{
+  fs.readFile(__dirname+'/view/signup.html',(err,data)=>{
+    if(err){
+      console.log("Error Occured",err)
+      return res.status(500).send('internal error');
+    }
+    res.sendFile(__dirname+'/view/signup.html');
+ })
+})
+//Admin Login
+app.post('/adminlogin',(req,res)=>{
+  fs.readFile(__dirname+'/view/homepage/homepage.html',(err,data)=>{
+    if(err){
+      console.log("Error Occured",err)
+      return res.status(500).send('internal error');
+    }
+    res.sendFile(__dirname+'/view/homepage/homepage.html');
+ })
+})
 
 
 

@@ -1,0 +1,94 @@
+*
+{
+    margin: 0;
+    
+    padding: 0;
+    
+}
+body{
+	margin: 0;
+	padding: 0;
+	
+	font-family: 'Jost', sans-serif;
+	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+.part-1
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.part-1 .logo
+{
+   
+   
+    margin-left: 20px;
+    width: 118px;
+    height:107px;
+    
+}
+.part-1 .women
+{
+   
+   
+    margin-right: 30px;
+    width: 118px;
+    height:107px;
+    
+}
+.part-1 p
+{
+    color: white;
+    font-family: 'roboto';
+    font-weight: 700;
+    text-align: center;
+    font-size: 25px;
+}
+#form{
+    width:300px;
+    height: 320px;
+    margin:auto auto auto auto;
+    margin-top: 70px;
+    border:2px solid black;
+    padding: 40px;
+    background-color: #24243e;
+}
+
+    input{
+    width: 80%;
+	height: 20px;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 0px;
+	background-color: none;
+	border-bottom: 0.5px solid white;
+	background: none;
+    background: transparent;
+	color: #eee;
+    }
+    button{
+        width: 60%;
+        height: 40px;
+        margin-left: -150px;
+        justify-content: center;
+        display: block;
+        color: #fff;
+        background: #573b8a;
+        font-size: 1em;
+        font-weight: bold;
+        margin-top: 30px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        transition: .2s ease-in;
+        cursor: pointer;
+        margin-left: 50px;
+    }
+    h1{
+        color: #eee;
+        margin-left: 90px;
+    }
