@@ -16,9 +16,9 @@
 
        <!------------------------------------------------------------------------>
        <label for="input"><img class="camera" src="camera.png"></label>
-       <input type="file" action="image/jpg,image/jpeg,image/png" id="input" enctype="multipart/form-data">
+       <input type="file" action="image/jpg,image/jpeg,image/png" id="input">
        <p id="name"></p>
-       <!-- <button onclick=""></button>   -->
+       <button onclick=""></button>  
         </div>
       <div class="right">
        <p class="info">INFORMATION</p>
@@ -68,13 +68,13 @@
     </div>
 </div>
 <script>
-//   let input=document.getElementById('input');
-//   let image=document.getElementById('images');
+  let input=document.getElementById('input');
+  let image=document.getElementById('images');
 
-//   input.onchange=function()
-//   {
-//   image.src=URL.createObjectURL(input.files[0]);
-// };
+  input.onchange=function()
+  {
+  image.src=URL.createObjectURL(input.files[0]);
+};
   fetch('/profileData').then((data)=>data.json()).then((el)=>{if(el !== undefined && el){showdata(el)}});
   function showdata(data){
     if(data?.user !== undefined && data){
