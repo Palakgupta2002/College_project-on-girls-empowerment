@@ -1,0 +1,46 @@
+.section
+{
+    margin-left: 100px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    width: 91.3%;
+    height: 100%;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-top: 7px;
+   
+}
+
+.part-1
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.part-1 .logo
+{
+   
+   
+    margin-left: 20px;
+    width: 118px;
+    height:107px;
+    
+}
+.part-1 .women
+{
+   
+   
+    margin-right: 30px;
+    width: 118px;
+    height:107px;
+    
+}
+.part-1 p
+{
+    color: white;
+    font-family: 'roboto';
+    font-weight: 700;
+    text-align: center;
+    font-size: 25px;
+}

@@ -1,12 +1,17 @@
+//This is where i can access a package
 const express = require('express')
 const mongoose = require('mongoose')
 const path = require('path')
 const fs = require('fs')
 const bcrypt = require('bcrypt');
 var bodyParser = require('body-parser')
-const multer=require("multer")
+const multer=require("multer");
+const { Admin } = require('mongodb');
 const app = express()
 var enrollment1;
+
+
+//This is for mongoose connection
 mongoose
   .connect(
     'mongodb://127.0.0.1/users',
@@ -18,7 +23,10 @@ mongoose
   .catch((err) => {
     console.log('error occurs', err)
   })
+  //This is for public Static
   app.use(express.static(path.join(__dirname, 'public')));
+
+  //This is for Server running
 app.listen(5000, () => {
   console.log('server is running')
 })
@@ -30,6 +38,8 @@ app.use(
   }),
 )
 
+
+//This is Landing Page
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/view/landing/landing.html')
 })
@@ -40,7 +50,7 @@ db.on('error', () => console.log('Error in Connecting to Database'))
 db.once('open', () => console.log('Connected to Database'))
 
 
-
+//This is for users
 app.post('/submit', (req, res) => {
   var name = req.body.name;
   var email = req.body.email;
@@ -57,6 +67,7 @@ app.post('/submit', (req, res) => {
   var image=req.body.image;
   const Branch = req.body.Branch;
   enrollment1=req.body.enrollment;
+
   // Check if user with the same email already exists
   db.collection('users').findOne({ enrollment:enrollment }, (err, user) => {
     if (err) {
@@ -89,7 +100,7 @@ app.post('/submit', (req, res) => {
         admissionyear:admissionyear,
         department:department,
         Branch:Branch ,
-         image:image,
+        image:image,
         confirmpassword:hashedPassword
       };
       console.log(password,confirmpassword);
@@ -101,7 +112,7 @@ app.post('/submit', (req, res) => {
   
           console.log('Record Inserted Successfully', collection);
           // res.redirect('/profile');
-          res
+       
           return res.sendFile(__dirname + '/view/homepage/homepage.html');
         });
       }
@@ -118,7 +129,7 @@ app.post('/submit', (req, res) => {
 
 
 
-//for a lgin page
+//for a login page
 app.post('/login', (req, res) => {
   var email = req.body.email;
   var password = req.body.password;
@@ -162,6 +173,9 @@ app.post('/login', (req, res) => {
   });
 });
 
+
+
+//This is for profile
 app.engine('html', require('ejs').renderFile)
 app.set('view engine', 'html')
 app.get('/profile', (req, res) => {
@@ -180,6 +194,9 @@ app.get('/profile', (req, res) => {
   });
 });
 
+
+
+//This is for profiledata 
 app.get('/profileData', (req, res) => {
   db.collection('users').findOne({enrollment:enrollment1}, (err, user) => {
     if (err) {
@@ -209,6 +226,8 @@ app.get('/profileData', (req, res) => {
   });
 });
 
+
+//This is for homepage Api
 app.get('/homepage',(req,res)=>{
   fs.readFile(__dirname+'/view/homepage/homepage.html',(err,data)=>{
     if(err){
@@ -228,6 +247,8 @@ app.get('/complainpage',(req,res)=>{
  })
 })
 
+
+//This is for complain
 app.post('/complain', (req, res) => {
   var venrollment = req.body.venrollment;
   var vmobile = req.body.vmobile;
@@ -269,6 +290,8 @@ app.post('/complain', (req, res) => {
     return res.status(200).send('<script>alert("' + alertMessage + '"); window.location.href="/complainpage";</script>');
   });
 });
+
+
 //admin Api
 app.get('/admindash',(req,res)=>{
   fs.readFile(__dirname+'/view/admin/admin.html',(err,data)=>{
@@ -279,6 +302,8 @@ app.get('/admindash',(req,res)=>{
     res.sendFile(__dirname+'/view/admin/admin.html');
  })
 })
+
+
 //signup Api
 app.get('/signup',(req,res)=>{
   fs.readFile(__dirname+'/view/signup.html',(err,data)=>{
@@ -289,20 +314,40 @@ app.get('/signup',(req,res)=>{
     res.sendFile(__dirname+'/view/signup.html');
  })
 })
+
+
 //Admin Login
-app.post('/adminlogin',(req,res)=>{
-  fs.readFile(__dirname+'/view/homepage/homepage.html',(err,data)=>{
-    if(err){
-      console.log("Error Occured",err)
-      return res.status(500).send('internal error');
+app.post('/adminlogin', (req, res) => {
+  var adminid = req.body.adminid;
+  var adminemail = req.body.adminemail;
+  var adminpassword = req.body.adminpassword;
+
+  var alogindata = {
+    adminid: adminid,
+    adminemail: adminemail,
+    adminpassword: adminpassword
+  };
+
+  db.collection('admin').findOne({ id: adminid, email: adminemail }, (err, admin) => {
+    if (err) {
+      console.log('Error occurred during login', err);
+      return res.status(500).send('Internal Server error');
     }
-    res.sendFile(__dirname+'/view/homepage/homepage.html');
- })
-})
 
-
-
-
+    if (admin) {
+      // Compare the entered password with the hashed password stored in the admin object
+      if (alogindata.adminpassword == admin.password) {
+        // User authenticated
+        res.status(200).sendFile(__dirname+'/view/admin/adminhomepage.html');
+      
+      } else {
+        // Incorrect password
+        res.status(401).send('Invalid password');
+      }
+    } 
+    
+  });
+});
 
 
 // Function to generate a unique ID
