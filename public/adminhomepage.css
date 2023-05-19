@@ -10,7 +10,7 @@ body{
 	padding: 0;
 	
 	font-family: 'Jost', sans-serif;
-	background: linear-gradient(to left, #0f0c29, #302b63, #24243e);
+	background: linear-gradient(to left, #eaeaea, white, #d0d0de);
   
 }
 .part-1
@@ -22,7 +22,7 @@ body{
     margin-bottom: 20px;
    border-bottom: 2px solid white;
    border-radius: 2%;
-   box-shadow: rgba(255, 255, 255, 0.166) 0px 7px 29px 0px;
+   box-shadow: rgba(26, 23, 23, 0.166) 0px 7px 29px 0px;
    background-color: aliceblue;
 }
 .part-1 .logo
@@ -53,12 +53,14 @@ body{
 }
 .bodyfun{
     display:flex;
+    gap: 2%;
 }
 .feedback{
     border-right: 2px solid black;
-    width: 400px;
-    height: 900px;
+    width: 30%;
+    height: 1100px;
     background-color: #302b63;
+    margin-left: 1.4%;
 }
 .feedback h1{
     margin-left: 120px;
@@ -72,3 +74,87 @@ body{
     height: 1px;
     margin-left:100px ;
 }
+.complain h1{
+    margin-left:400px;
+    margin-top: 40px;
+    color: aliceblue;
+    }
+    .complain{
+        width: 66%;
+    height: 1100px;
+    background-color: #302b63;
+   
+        
+    }
+    .complain hr{
+        border-bottom: 2px solid black;
+        width: 180px;
+        height: 1px;
+        margin-left:390px ;
+    }
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #080332;
+  border-right: none;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #070415;
+}
+
+.searchTerm:focus{
+  color: #08021a;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #0b065b;
+  background: #000d3e;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap1{
+  width: 26%;
+  position: absolute;
+  top: 40%;
+  left: 17%;
+  transform: translate(-50%, -50%);
+}
+.wrap2{
+    width: 40%;
+    position: absolute;
+    top: 40%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+  }
+  #userContainer{
+    margin-top: 50px;
+    font-size: 15px;
+    color: white;
+    border: 2px solid black;
+    margin-left: -190px;
+    padding: 30px;
+    position: fixed;
+  }
+
+ 

@@ -41,7 +41,9 @@ app.use(
 
 //This is Landing Page
 app.get('/', function (req, res) {
-  res.sendFile(__dirname + '/view/landing/landing.html')
+  
+ res.sendFile(__dirname + '/view/landing/landing.html')
+
 })
 var db = mongoose.connection
  const collection = db.collection('users');
@@ -69,15 +71,15 @@ app.post('/submit', (req, res) => {
   enrollment1=req.body.enrollment;
 
   // Check if user with the same email already exists
-  db.collection('users').findOne({ enrollment:enrollment }, (err, user) => {
+  db.collection('users').findOne({ enrollment:enrollment,email:email }, (err, user) => {
     if (err) {
       console.log('Error occurred during user lookup:', err);
       return res.status(500).send('Internal Server Error');
     }
 
     if (user) {
-      console.log('User with the same enrollment Number is already exists');
-      return res.status(400).send('<script>alert("User with the same enrollment Number is already exists"); window.location.href="/";</script>');
+      console.log('User with the same is already exists');
+      return res.status(400).send('<script>alert("User with the same credentials  is already exists please make sure your enrollment no. and email is your own"); window.location.href="/";</script>');
     }
 
     // If user doesn't exist, proceed with registration
@@ -227,6 +229,7 @@ app.get('/profileData', (req, res) => {
 });
 
 
+
 //This is for homepage Api
 app.get('/homepage',(req,res)=>{
   fs.readFile(__dirname+'/view/homepage/homepage.html',(err,data)=>{
@@ -289,7 +292,22 @@ app.post('/complain', (req, res) => {
     var alertMessage = 'Your complaint has been submitted successfully. Complaint ID: ' + complaintId;
     return res.status(200).send('<script>alert("' + alertMessage + '"); window.location.href="/complainpage";</script>');
   });
+
 });
+
+//api for complain data
+app.get('/complaindata', (req, res) => {
+  db.collection('complaininfo')
+    .find()
+    .toArray()
+    .then((response) => {
+      res.send(response)
+    })
+    .catch((err) => {
+      console.log(err, 'error at get complain data')
+    })
+})
+   
 
 
 //admin Api
@@ -349,6 +367,10 @@ app.post('/adminlogin', (req, res) => {
   });
 });
 
+//To retrive all the data from complain data
+
+
+    
 
 // Function to generate a unique ID
 function generateUniqueId() {

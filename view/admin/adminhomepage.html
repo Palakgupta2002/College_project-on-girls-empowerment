@@ -1,36 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="adminhomepage.css">
-    <title>Document</title>
-</head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="adminhomepage.css">
+  <title>Document</title>
+ </head>
+
 <body>
-     <div class="section">
-       <div class="part-1">
-          <img class="women" src="women.png">
-          
-          <p>Madhav Institute of Technology &amp; Science, Gwalior (M.P.), INDIA 
-            <br>
-            
-              माधव प्रौद्योगिकी एवं विज्ञान संस्थान, ग्वालियर (म.प्र.), भारत 
-          </p>
-          <img class="logo" src="mits logo.png">
-         
+  <div class="section">
+    <div class="part-1">
+      <img class="women" src="women.png">
+
+      <p>Madhav Institute of Technology &amp; Science, Gwalior (M.P.), INDIA
+        <br>
+
+        माधव प्रौद्योगिकी एवं विज्ञान संस्थान, ग्वालियर (म.प्र.), भारत
+      </p>
+      <img class="logo" src="mits logo.png">
+
+    </div>
+
+    <!-- ................Part to for feedback.............................. -->
+    <div class="bodyfun">
+      <div class="feedback">
+        <h1>Feedback</h1>
+        <hr>
+        </hr>
+        <div class="wrap1">
+          <div class="search">
+            <input type="text" class="searchTerm" placeholder="Search a feedback by Erollment">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
         </div>
 
-        <!-- ................Part to for feedback.............................. -->
-        <div class="bodyfun">
-            <div class="feedback">
-                <h1>Feedback</h1>
-                <hr></hr>
+      </div>
+      <div class="complain">
 
-            </div>
-            <div class="complain">
-
-            </div>
+        <h1>complains</h1>
+        <hr>
+        </hr>
+        <div class="wrap2">
+          <div class="search">
+            <input type="text" class="searchTerm" placeholder="Search a complain by Enrollment">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+          <div id="userContainer"></div>
         </div>
+
+
+      </div>
+    </div>
 </body>
+<script>
+  fetch('/complaindata').then((data)=>{
+    return data.json();
+  }).then((user)=>{
+    const userBoxes = user.map((user) => {
+      return `
+      <div class="user-box" style="font-size:18px;  padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;">
+         <h2>${user.venrollment}</h2>
+          <p>Enrollment: ${user.vmobile}</p>
+          <p>Department: ${user.aname}</p>
+          <p>Admission Year: ${user.abranch}</p>
+          <p>Mobile: ${user.adepartement}</p>
+          <p>Father: ${user.idate}</p>
+          <p>Image: ${user.ctype}</p>
+          <p>Branch: ${user.cdate}</p>
+          <p>Mother: ${user.message}</p>
+          <p>Mother: ${user.complaintId}</p>
+        </div>
+      `;
+    });
+    document.getElementById("userContainer").innerHTML=userBoxes;
+    })
+ 
+</script>
+
+
 </html>
