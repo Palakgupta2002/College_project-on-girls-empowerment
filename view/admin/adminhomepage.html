@@ -59,27 +59,109 @@
     </div>
 </body>
 <script>
-  fetch('/complaindata').then((data)=>{
+  fetch('/complaindataadmn')
+  .then((data) => {
     return data.json();
-  }).then((user)=>{
+  })
+  .then((user) => {
     const userBoxes = user.map((user) => {
       return `
-      <div class="user-box" style="font-size:18px;  padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;">
-         <h2>${user.venrollment}</h2>
-          <p>Enrollment: ${user.vmobile}</p>
-          <p>Department: ${user.aname}</p>
-          <p>Admission Year: ${user.abranch}</p>
-          <p>Mobile: ${user.adepartement}</p>
-          <p>Father: ${user.idate}</p>
-          <p>Image: ${user.ctype}</p>
-          <p>Branch: ${user.cdate}</p>
-          <p>Mother: ${user.message}</p>
-          <p>Mother: ${user.complaintId}</p>
+        <div class="user-box" style="font-size:18px; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;">
+          <h2> Enrollment no.:${user.venrollment}</h2>
+          <p>Mobile no.: ${user.vmobile}</p>
+          <p>Accused Departmrnt: ${user.aname}</p>
+          <p>Accused Branch:${user.abranch}</p>
+          <p>Accused Departement: ${user.adepartement}</p>
+          <p>Incident Date: ${user.idate}</p>
+          <p>Complain type: ${user.ctype}</p>
+          <p>Complain Date: ${user.cdate}</p>
+          <p>Complain description: ${user.message}</p>
+          <p>Complain Id: ${user.complaintId}</p>
+          <div style="display:flex; margin-left:500px; column-gap:20px;">
+            <button onclick="updateStatus('${user.complaintId}', this)" style="padding:10px; border-radius:5px; background-color:red; color:white;">Approved</button>
+            <button onclick="updateStatus1('${user.complaintId}', this)" id="process" style="padding:10px; border-radius:5px; background-color:red; color:white;">Process</button>
+            <button onclick="updateStatus2('${user.complaintId}', this)" id="solved" style="padding:10px; border-radius:5px; background-color:red; color:white;">Solved</button>
+          </div>
         </div>
       `;
     });
-    document.getElementById("userContainer").innerHTML=userBoxes;
+
+    document.getElementById("userContainer").innerHTML = userBoxes;
+  });
+
+function updateStatus(complaintId, button) {
+  fetch('/approved', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ complaintId: complaintId })
+  })
+    .then(response => {
+      if (response.ok) {
+        console.log('Status updated successfully');
+        button.disabled = true; // Disable the button after it's clicked
+        button.style.backgroundColor = 'green'; // Change the button color to green
+        return;
+      }
+      throw new Error('Request failed');
     })
+    .catch(error => {
+      console.error('Error occurred while updating status:', error);
+    });
+}
+
+function updateStatus1(complaintId, button) {
+  fetch('/process', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ complaintId: complaintId })
+  })
+    .then(response => {
+      if (response.ok) {
+        console.log('Status updated successfully');
+        button.disabled = true; // Disable the button after it's clicked
+        button.style.backgroundColor = 'green'; // Change the button color to green
+        button.innertext="closed";
+        return;
+      }
+      throw new Error('Request failed');
+    })
+    .catch(error => {
+      console.error('Error occurred while updating status:', error);
+    });
+}
+
+function updateStatus2(complaintId, button) {
+  fetch('/solved', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ complaintId: complaintId })
+  })
+    .then(response => {
+      if (response.ok) {
+        console.log('Status updated successfully');
+        button.disabled = true; // Disable the button after it's clicked
+        button.style.backgroundColor = 'green'; // Change the button color to green
+        return;
+      }
+      throw new Error('Request failed');
+    })
+    .catch(error => {
+      console.error('Error occurred while updating status:', error);
+    });
+}
+
+
+ 
+
+      
+   
+
  
 </script>
 

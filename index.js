@@ -9,7 +9,7 @@ const multer=require("multer");
 const { Admin } = require('mongodb');
 const app = express()
 var enrollment1;
-
+var status;
 
 //This is for mongoose connection
 mongoose
@@ -249,6 +249,16 @@ app.get('/complainpage',(req,res)=>{
     res.sendFile(__dirname+'/view/complain/complain.html');
  })
 })
+//This is for complain status
+app.get('/complainstatus',(req,res)=>{
+  fs.readFile(__dirname+'/view/complainstatus.html/cmplnsts.html',(err,data)=>{
+    if(err){
+      console.log("Error occurs to fetch file");
+      return res.status(500).send('internal error');
+    }
+    res.sendFile(__dirname+'/view/complainstatus.html/cmplnsts.html');
+  })
+})
 
 
 //This is for complain
@@ -297,16 +307,34 @@ app.post('/complain', (req, res) => {
 
 //api for complain data
 app.get('/complaindata', (req, res) => {
+  const enrollment = req.query.venrollment; // Get the enrollment number from the query parameters
+  
+  db.collection('complaininfo')
+    .find({ venrollment: enrollment1 })
+    .toArray()
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => {
+      console.log(err, 'error at get complain data');
+      res.status(500).send('Internal Server Error');
+    });
+});
+//This is for admin
+app.get('/complaindataadmn', (req, res) => {
+  const enrollment = req.query.venrollment; // Get the enrollment number from the query parameters
+  
   db.collection('complaininfo')
     .find()
     .toArray()
     .then((response) => {
-      res.send(response)
+      res.send(response);
     })
     .catch((err) => {
-      console.log(err, 'error at get complain data')
-    })
-})
+      console.log(err, 'error at get complain data');
+      res.status(500).send('Internal Server Error');
+    });
+});
    
 
 
@@ -367,7 +395,65 @@ app.post('/adminlogin', (req, res) => {
   });
 });
 
-//To retrive all the data from complain data
+//This is a functions to update status
+app.post('/approved', (req, res) => {
+  const complaintId = req.body.complaintId;
+  const status = '30%'; // Set the desired status value
+
+  db.collection('complaininfo').updateOne(
+    {complaintId: complaintId},
+    { $set: { cstatus: status } },
+    (err, result) => {
+      if (err) {
+        console.error('Error occurred while updating status:', err);
+        return res.status(500).send('Internal Server Error');
+      }
+      console.log('Status updated successfully');
+      return res.status(201).send('Status updated successfully');
+    }
+  );
+});
+app.post('/process', (req, res) => {
+  const complaintId = req.body.complaintId; // Retrieve the complaintId from the request body or query parameters
+  const status = '60%'; // Set the desired status value
+
+  db.collection('complaininfo').updateMany(
+    { complaintId: complaintId }, // Use the complaintId in the query to filter documents
+    { $set: { cstatus: status } },
+    (err, result) => {
+      if (err) {
+        console.error('Error occurred while updating status:', err);
+        return res.status(500).send('Internal Server Error');
+      }
+      console.log('Status updated successfully');
+      return res.status(201).send('Status updated successfully');
+    }
+  );
+});
+app.post('/solved', (req, res) => {
+  const complaintId = req.body.complaintId; // Retrieve the complaintId from the request body or query parameters
+  const status = '100%'; // Set the desired status value
+
+  db.collection('complaininfo').updateMany(
+    { complaintId: complaintId }, // Use the complaintId in the query to filter documents
+    { $set: { cstatus: status } },
+    (err, result) => {
+      if (err) {
+        console.error('Error occurred while updating status:', err);
+        return res.status(500).send('Internal Server Error');
+      }
+      console.log('Status updated successfully');
+      return res.status(201).send('Status updated successfully');
+    }
+  );
+});
+
+
+
+
+
+
+
 
 
     
