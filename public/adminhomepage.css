@@ -58,7 +58,7 @@ body{
 .feedback{
     border-right: 2px solid black;
     width: 30%;
-    height: 1100px;
+    height: 2000px;
     background-color: #302b63;
     margin-left: 1.4%;
 }
@@ -80,8 +80,8 @@ body{
     color: aliceblue;
     }
     .complain{
-        width: 66%;
-    height: 1100px;
+    width: 66%;
+    height: 2000px;
     background-color: #302b63;
    
         
