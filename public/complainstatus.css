@@ -46,3 +46,88 @@ body{
     text-align: center;
     font-size: 25px;
 }
+.feedback-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    z-index: 999;
+    /* width:200px;
+    height: 300px; */
+}
+
+.feedback-form.blur {
+    filter: blur(4px);
+}
+.blur {
+    filter: blur(5px);
+  }
+
+  .feedback-form {
+    display: none;
+   background-color: rgb(200, 200, 205);
+    width:400px;
+    height: 470px;
+    margin-top: 30px;
+
+    /* Add styling for the feedback form */
+  }
+  .feedback-form .input{
+      width: 80%;
+  height: 20px;
+  margin: 20px auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 0px;
+  background-color: none;
+  border-bottom: 0.5px solid white;
+  background: none;
+  background: transparent;
+  color:black;
+  font-size: 16px;
+
+  }
+  
+  #submitbtn{
+      width: 60%;
+  height: 40px;
+  margin-left: 80px;
+  justify-content: center;
+  display: block;
+  color: #fff;
+  background: #573b8a;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: .2s ease-in;
+  cursor: pointer;
+
+  }
+  #feedbackh{
+      margin-left: 80px;
+      color: rgb(2, 2, 30);
+      margin-bottom: 20px;
+      margin-top: 10px;
+  }
+  .inputmsg{
+      width: 80%;
+  height: 20px;
+  margin: 20px auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 0px;
+  background-color: none;
+  border-bottom: 0.5px solid white;
+  background: none;
+  background: transparent;
+  color:black;
+  font-size: 16px;
+
+  }

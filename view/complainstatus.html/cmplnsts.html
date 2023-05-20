@@ -1,91 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="complainstatus.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="complainstatus.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+  </style>
 </head>
 <body>
-    <div class="part-1">
-        <img class="women" src="women.png">
-        
-        <p>Madhav Institute of Technology &amp; Science, Gwalior (M.P.), INDIA 
-          <br>
-          
-            माधव प्रौद्योगिकी एवं विज्ञान संस्थान, ग्वालियर (म.प्र.), भारत 
-        </p>
-        <img class="logo" src="mits logo.png">
-       
-      </div>
-<div id="userstatus"></div>
-</body>
-</html>
-<script>
-//     var enrollement;
-//     fetch('/profileData')
-//   .then((data) => data.json())
-//   .then((user) => {
-//     console.log(user.
-//     name);
-//   });
+  <div class="part-1">
+    <img class="women" src="women.png">
+    <p>Madhav Institute of Technology &amp; Science, Gwalior (M.P.), INDIA<br>
+      माधव प्रौद्योगिकी एवं विज्ञान संस्थान, ग्वालियर (म.प्र.), भारत</p>
+    <img class="logo" src="mits logo.png">
+  </div>
+  <div id="container">
+    <div id="userstatus">Background Screen</div>
+    <div id="feedbackForm" class="feedback-form">
+     <h1 id="feedbackh">Feedback Form</h1>
+     <hr>
+      <form method="post" action="/feedback">
+        <input class="input"name="fname" type="text" placeholder="Enter your Name">
+        <input class="input"name="fmobile" type="Mobile no." placeholder="Enter Your Mobile no.">
+        <input class="input"name="faddress" type="text" placeholder="Enter your address">
+        <input class="inputmsg" name="fmsg" type="text" placeholder="Give a feedback">
+        <button id="submitbtn" type="button" onclick="submitFeedback()">Submit</button>
+      </form>
+    </div>
+  </div>
 
-//Fetch a complain data 
-     fetch("/complaindata").then((data)=>{
-        return data.json();
-    }).then((user)=>{
-        const userstatus=user.map((user)=>{
-           
-            return `
-            <div class="statusbox" style="border:2px solid blue;color:white;font-size:15px;">
-                    <h1>${user.complaintId}</h1>
-                    <h1>${user.ctype}</h1>
-                    <h1>${user.aname}</h1>
-                    <h1>${user.idate}</h1>
-                    <h1>${user.venrollment}</h1>
-                    <div style="margin-left:1150px;">
-                    <button onclick="feedback('${user.complaintId}')"  style="border-radius:8px;color:white; background-color:blue;padding:10px;">Feedback</button>
-                    <button onclick="status('${user.complaintId}')" style="border-radius:8px;color:white; background-color:blue;padding:10px;">status</button>
-                    </div>
-                    </div>`;
-                 
-                }
-       );
-        document.getElementById("userstatus").innerHTML=userstatus;
-     
-    }).catch((err)=>{
-        console.log("hello",err);
-    })
-
-    //Click Status 
-    function status(complaintId) {
+  <script>
     fetch("/complaindata")
-        .then((data) => data.json())
-        .then((user) => {
-            const filteredComplaints = user.filter((complain) => complain.complaintId === complaintId);
-            if (filteredComplaints.length > 0) {
-                const complain = filteredComplaints[0];
-                const statusMessage = complain.cstatus ? `Complain ID: ${complain.complaintId}\nStatus: ${complain.cstatus}` : `Your complain is in waiting`;
-                alert(statusMessage);
-            } else {
-                alert(`No complain found with ID: ${complaintId}`);
-            }
-        })
-        .catch((error) => {
-            console.log(error);
+      .then((data) => data.json())
+      .then((user) => {
+        const userstatus = user.map((user) => {
+          return `
+          <div class="statusbox" style="border:2px solid blue;color:white;font-size:15px;">
+            <h1>${user.complaintId}</h1>
+            <h1>${user.ctype}</h1>
+            <h1>${user.aname}</h1>
+            <h1>${user.idate}</h1>
+            <h1>${user.venrollment}</h1>
+            <div style="margin-left:1150px;">
+              <button onclick="feedback('${user.complaintId}')" style="border-radius:8px;color:white; background-color:blue;padding:10px;">Feedback</button>
+              <button onclick="status('${user.complaintId}')" style="border-radius:8px;color:white; background-color:blue;padding:10px;">Status</button>
+            </div>
+          </div>`;
         });
 
-    //click Feedback
+        document.getElementById("userstatus").innerHTML = userstatus.join('');
+      })
+      .catch((err) => {
+        console.log("Error:", err);
+      });
 
-}
+    function feedback(complaintId) {
+      const feedbackForm = document.getElementById('feedbackForm');
+      if (feedbackForm) {
+        feedbackForm.style.display = 'block';
+        document.getElementById('userstatus').classList.add('blur');
+      }
+    }
 
+    function status(complaintId) {
+      fetch("/complaindata")
+        .then((data) => data.json())
+        .then((user) => {
+          const filteredComplaints = user.filter((complain) => complain.complaintId === complaintId);
+          if (filteredComplaints.length > 0) {
+            const complain = filteredComplaints[0];
+            if (complain.cstatus === '100%') {
+              alert("Your complaint is solved. If you have any queries related to this complaint, click on the feedback button to provide your feedback");
+            } else {
+              const statusMessage = complain.cstatus ? `Complain ID: ${complain.complaintId}\nStatus: ${complain.cstatus}` : `Your complaint is in waiting`;
+              alert(statusMessage);
+            }
+          } else {
+            alert(`No complain found with ID: ${complaintId}`);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
 
-    
-
-
-        
-
-  
-    
-</script>
+    function submitFeedback() {
+      const feedbackForm = document.getElementById('feedbackForm');
+      if (feedbackForm) {
+        feedbackForm.style.display = 'none';
+        document.getElementById('userstatus').classList.remove('blur');
+        // Perform submit feedback action
+        alert('Feedback submitted successfully!');
+      }
+    }
+  </script>
+</body>
+</html>

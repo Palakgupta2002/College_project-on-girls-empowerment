@@ -394,6 +394,9 @@ app.post('/adminlogin', (req, res) => {
     
   });
 });
+app.post("/feedback",(req,res)=>{
+  const fname=req.body.fname;
+})
 
 //This is a functions to update status
 app.post('/approved', (req, res) => {
