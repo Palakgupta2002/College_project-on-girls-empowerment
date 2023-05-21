@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 var bodyParser = require('body-parser')
 const multer=require("multer");
 const { Admin } = require('mongodb');
+const { error } = require('console');
 const app = express()
 var enrollment1;
 var status;
@@ -394,9 +395,47 @@ app.post('/adminlogin', (req, res) => {
     
   });
 });
-app.post("/feedback",(req,res)=>{
-  const fname=req.body.fname;
+//THis is for feedback Data
+app.post('/feedback', (req, res) => {
+  const complaintId = req.body.complaintId;
+  const fenrollment=enrollment1;
+  const fname = req.body.fname;
+  const fmobile = req.body.fmobile;
+  const faddress = req.body.faddress;
+  const fmsg = req.body.fmsg;
+  
+
+  var feedback = {
+    complaintId: complaintId,
+    fname: fname,
+    fmobile: fmobile,
+    faddress: faddress,
+    fmsg: fmsg,
+    fenrollment:fenrollment,
+  };
+
+  db.collection('feedbackdata').insertOne(feedback, (err, result) => {
+    if (err) {
+      console.log("An error occurred while inserting the feedback:", err);
+      return res.status(500).send("Error occurred while submitting feedback");
+    }
+
+    console.log("Feedback submitted successfully");
+    var alertMessage = ' Your Feedback succesfully send admin';
+    return res.status(200).send('<script>alert("' + alertMessage + '"); window.location.href="/complainstatus";</script>');
+  });
+});
+//This is for feedbackdata to send admin
+app.get('/feedbackadmin',(req,res)=>{
+  db.collection('feedbackdata').find().toArray().then((response)=>{
+    console.log("Feedback Shows")
+    res.send(response);
+  }).catch((err)=>{
+    console.log(err,"Error occures to inserted");
+    res.status(500).send("error occurs");
+  })
 })
+
 
 //This is a functions to update status
 app.post('/approved', (req, res) => {

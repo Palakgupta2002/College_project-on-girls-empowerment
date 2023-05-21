@@ -36,6 +36,7 @@
               <i class="fa fa-search"></i>
             </button>
           </div>
+          <div id="userfeedback"></div>
         </div>
 
       </div>
@@ -78,15 +79,37 @@
           <p>Complain description: ${user.message}</p>
           <p>Complain Id: ${user.complaintId}</p>
           <div style="display:flex; margin-left:500px; column-gap:20px;">
-            <button onclick="updateStatus('${user.complaintId}', this)" style="padding:10px; border-radius:5px; background-color:red; color:white;">Approved</button>
-            <button onclick="updateStatus1('${user.complaintId}', this)" id="process" style="padding:10px; border-radius:5px; background-color:red; color:white;">Process</button>
-            <button onclick="updateStatus2('${user.complaintId}', this)" id="solved" style="padding:10px; border-radius:5px; background-color:red; color:white;">Solved</button>
+            <button onclick="updateStatus('${user.complaintId}', this)" style="padding:10px; border-radius:12px; background-color:red; color:white;">Approved</button>
+            <button onclick="updateStatus1('${user.complaintId}', this)" id="process" style="padding:10px; border-radius:12px; background-color:red; color:white;">Process</button>
+            <button onclick="updateStatus2('${user.complaintId}', this)" id="solved" style="padding:10px; border-radius:12px; background-color:red; color:white;">Solved</button>
           </div>
         </div>
       `;
     });
 
     document.getElementById("userContainer").innerHTML = userBoxes;
+  });
+
+
+  fetch('/feedbackadmin')
+  .then((data) => {
+    return data.json();
+  })
+  .then((user) => {
+    const userBoxes = user.map((user) => {
+      return `
+        <div class="user-box" style="font-size:18px; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;">
+          <h2> Name:${user.fname}</h2>
+          <p>Mobile no.: ${user.fmobile}</p>
+          <p>Address: ${user.faddress}</p>
+          <p>Feedback:${user.fmsg}</p>
+          <p>Complain Id:${user.complaintId}</p>
+          <button style="background-color:red; padding:10px; color:white;margin-left:210px;border-radius:12px;">Reopen</button>
+           </div>
+      `;
+    });
+
+    document.getElementById("userfeedback").innerHTML = userBoxes;
   });
 
 function updateStatus(complaintId, button) {
@@ -155,15 +178,5 @@ function updateStatus2(complaintId, button) {
       console.error('Error occurred while updating status:', error);
     });
 }
-
-
- 
-
-      
-   
-
- 
 </script>
-
-
 </html>

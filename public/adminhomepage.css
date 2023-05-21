@@ -58,7 +58,7 @@ body{
 .feedback{
     border-right: 2px solid black;
     width: 30%;
-    height: 2000px;
+    height: 3000px;
     background-color: #302b63;
     margin-left: 1.4%;
 }
@@ -155,6 +155,16 @@ body{
     margin-left: -190px;
     padding: 30px;
     position: fixed;
+  }
+  #userfeedback{
+    margin-top: 50px;
+    font-size: 15px;
+    color: white;
+    border: 1px solid black;
+    margin-left: -20px;
+    padding: 30px;
+    position: fixed;
+
   }
 
  

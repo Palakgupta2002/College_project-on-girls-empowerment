@@ -22,12 +22,13 @@
     <div id="feedbackForm" class="feedback-form">
      <h1 id="feedbackh">Feedback Form</h1>
      <hr>
-      <form method="post" action="/feedback">
+      <form  action='/feedback' method="post">
         <input class="input"name="fname" type="text" placeholder="Enter your Name">
         <input class="input"name="fmobile" type="Mobile no." placeholder="Enter Your Mobile no.">
         <input class="input"name="faddress" type="text" placeholder="Enter your address">
         <input class="inputmsg" name="fmsg" type="text" placeholder="Give a feedback">
-        <button id="submitbtn" type="button" onclick="submitFeedback()">Submit</button>
+        <input id="complaintIdInput" name="complaintId" type="hidden">
+        <button id="submitbtn"  type="submit" onclick="submitFeedback()">Submit</button>
       </form>
     </div>
   </div>
@@ -62,6 +63,7 @@
       if (feedbackForm) {
         feedbackForm.style.display = 'block';
         document.getElementById('userstatus').classList.add('blur');
+        document.getElementById('complaintIdInput').value = complaintId;
       }
     }
 
