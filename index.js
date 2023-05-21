@@ -10,7 +10,8 @@ const { Admin } = require('mongodb');
 const { error } = require('console');
 const app = express()
 var enrollment1;
-var status;
+
+let buttonvalue=1;
 
 //This is for mongoose connection
 mongoose
@@ -403,7 +404,7 @@ app.post('/feedback', (req, res) => {
   const fmobile = req.body.fmobile;
   const faddress = req.body.faddress;
   const fmsg = req.body.fmsg;
-  
+
 
   var feedback = {
     complaintId: complaintId,
@@ -441,10 +442,11 @@ app.get('/feedbackadmin',(req,res)=>{
 app.post('/approved', (req, res) => {
   const complaintId = req.body.complaintId;
   const status = '30%'; // Set the desired status value
-
+if(buttonvalue===1){
   db.collection('complaininfo').updateOne(
     {complaintId: complaintId},
-    { $set: { cstatus: status } },
+    { $set: { buttonvalue: 2 
+    ,cstatus:status } },
     (err, result) => {
       if (err) {
         console.error('Error occurred while updating status:', err);
@@ -454,14 +456,20 @@ app.post('/approved', (req, res) => {
       return res.status(201).send('Status updated successfully');
     }
   );
+}
+else{
+  buttonvalue=2
+}
+
 });
 app.post('/process', (req, res) => {
   const complaintId = req.body.complaintId; // Retrieve the complaintId from the request body or query parameters
   const status = '60%'; // Set the desired status value
-
+if(buttonvalue===2){
   db.collection('complaininfo').updateMany(
     { complaintId: complaintId }, // Use the complaintId in the query to filter documents
-    { $set: { cstatus: status } },
+    { $set: { buttonvalue: 3 
+    ,cstatus:status} },
     (err, result) => {
       if (err) {
         console.error('Error occurred while updating status:', err);
@@ -471,14 +479,20 @@ app.post('/process', (req, res) => {
       return res.status(201).send('Status updated successfully');
     }
   );
+}
+else{
+  buttonvalue=2;
+}
+
 });
 app.post('/solved', (req, res) => {
   const complaintId = req.body.complaintId; // Retrieve the complaintId from the request body or query parameters
   const status = '100%'; // Set the desired status value
-
+if(buttonvalue===3){
   db.collection('complaininfo').updateMany(
     { complaintId: complaintId }, // Use the complaintId in the query to filter documents
-    { $set: { cstatus: status } },
+    { $set: { cstatus: status  
+    ,  buttonvalue: 3 } },
     (err, result) => {
       if (err) {
         console.error('Error occurred while updating status:', err);
@@ -488,8 +502,26 @@ app.post('/solved', (req, res) => {
       return res.status(201).send('Status updated successfully');
     }
   );
-});
 
+ 
+}
+else{
+  buttonvalue=4;
+}
+db.collection('complaininfo').updateMany(
+ // Use the complaintId in the query to filter documents
+ { complaintId: complaintId },
+  { $set: { buttonvalue: 4 } },
+  (err, result) => {
+    if (err) {
+      console.error('Error occurred while updating status:', err);
+      return res.status(500).send('Internal Server Error');
+    }
+    console.log('Status updated successfully');
+    return res.status(201).send('Status updated successfully');
+  }
+);
+})
 
 
 
@@ -515,5 +547,27 @@ function generateUniqueId() {
   return uniqueId;
 }
  //function for add image
+ app.get('/status', (req, res) => {
+  const complaintId = req.query.complaintId; // Retrieve the complaintId from the query parameters
+
+  // Assuming you have a database query to retrieve the status based on the complaintId
+  // Replace this with your actual implementation
+  db.collection('complaininfo').findOne(
+    { complaintId: complaintId },
+    (err, result) => {
+      if (err) {
+        console.error('Error occurred while retrieving status:', err);
+        return res.status(500).send('Internal Server Error');
+      }
+      
+      if (!result) {
+        return res.status(404).send('Status not found');
+      }
+      
+      const status = result.status; // Assuming the status is stored in the "cstatus" field
+      return res.status(200).json({ status });
+    }
+  );
+});
  
 
