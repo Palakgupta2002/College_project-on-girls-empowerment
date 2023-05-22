@@ -65,29 +65,50 @@
     return data.json();
   })
   .then((user) => {
+    if(user.length==0){
+      document.getElementById("userContainer").innerHTML = "<p>No complaints found.</p>";
+    }
+    else{
     const userBoxes = user.map((user) => {
       return `
-        <div class="user-box" style="font-size:18px; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;">
-          <h2> Enrollment no.:${user.venrollment}</h2>
-          <p>Mobile no.: ${user.vmobile}</p>
-          <p>Accused Departmrnt: ${user.aname}</p>
-          <p>Accused Branch:${user.abranch}</p>
-          <p>Accused Departement: ${user.adepartement}</p>
-          <p>Incident Date: ${user.idate}</p>
-          <p>Complain type: ${user.ctype}</p>
-          <p>Complain Date: ${user.cdate}</p>
-          <p>Complain description: ${user.message}</p>
-          <p>Complain Id: ${user.complaintId}</p>
-          <div style="display:flex; margin-left:500px; column-gap:20px;">
-            <button onclick="updateStatus('${user.complaintId}', this)" style="padding:10px; border-radius:12px; background-color:red; color:white;">Approved</button>
-            <button onclick="updateStatus1('${user.complaintId}', this)" id="process" style="padding:10px; border-radius:12px; background-color:red; color:white;">Process</button>
-            <button onclick="updateStatus2('${user.complaintId}', this)" id="solved" style="padding:10px; border-radius:12px; background-color:red; color:white;">Solved</button>
-          </div>
-        </div>
+      <table style="border-collapse: collapse; width: 60%; border: 1px solid #ddd; font-size:10.2px; margin-top:10px">
+        <p style="font-size:18px;margin-left:150px;">Complainant Enrollment no. ${user.venrollment}</p>
+        
+        <tr style="background-color: #f5f5f5;">
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Accused Name</th>
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Accused Branch</th>
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Accused Department</th>
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Incident Date</th>
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Complain Type</th>
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Complain Date</th>
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Complain Id</th>
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Status</th>
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Approved</th>
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Process</th>
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Solved</th>
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">reopen</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px; border-right: 1px solid black">${user.aname}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.abranch}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.adepartment}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.idate}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.ctype}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.cdate}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.complaintId}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.cstatus ? user.cstatus : "Waiting"}</td>
+         <td><button style="border-radius:1px solid black;background-color:red;color:white;padding:8px;"  onclick="updateStatus('${user.complaintId}',this)">Approved</button></td>
+         <td><button style="border-radius:1px solid black;background-color:red;color:white;padding:8px;" onclick="updateStatus1('${user.complaintId}',this)">Process</button></td>
+         <td><button style="border-radius:1px solid black;background-color:red;color:white;padding:8px;" onclick="updateStatus2('${user.complaintId}',this)">Solved</button></td>
+         <td><button style="border-radius:1px solid black;background-color:red;color:white;padding:8px;" onclick="updateStatus2('${user.complaintId}',this)">Reopen</button></td>
+        </tr>
+      </table>
       `;
     });
+  
 
     document.getElementById("userContainer").innerHTML = userBoxes;
+  }
   });
 
 
@@ -96,7 +117,12 @@
     return data.json();
   })
   .then((user) => {
+    if (user.length === 0) {
+      document.getElementById("userfeedback").innerHTML = "<p>No feedback found.</p>";
+    }
+    else{
     const userBoxes = user.map((user) => {
+      
       return `
         <div class="user-box" style="font-size:18px; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc;">
           <h2> Name:${user.fname}</h2>
@@ -104,12 +130,15 @@
           <p>Address: ${user.faddress}</p>
           <p>Feedback:${user.fmsg}</p>
           <p>Complain Id:${user.complaintId}</p>
+
           <button style="background-color:red; padding:10px; color:white;margin-left:210px;border-radius:12px;">Reopen</button>
            </div>
       `;
     });
+  
 
     document.getElementById("userfeedback").innerHTML = userBoxes;
+  }
   });
 
 function updateStatus(complaintId, button) {

@@ -21,7 +21,7 @@ body{
     
     z-index: 1000;
     height: 580px;
-    background: linear-gradient(to bottom, #0f0c39, #302b90, #24243e);
+    /* background: linear-gradient(to bottom, #0f0c39, #302b90, #24243e); */
 }
 .left
 {

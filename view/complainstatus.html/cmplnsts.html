@@ -17,55 +17,83 @@
       माधव प्रौद्योगिकी एवं विज्ञान संस्थान, ग्वालियर (म.प्र.), भारत</p>
     <img class="logo" src="mits logo.png">
   </div>
+  <div style="color:white; margin-left:600px;margin-bottom: 40px;">
+  <h1 >Complaints</h1>
+  <hr style="width:180px">
+  <hr style="width:180px">
+</div>
   <div id="container">
     <div id="userstatus">Background Screen</div>
     <div id="feedbackForm" class="feedback-form">
      <h1 id="feedbackh">Feedback Form</h1>
      <hr>
       <form  action='/feedback' method="post">
-        <input class="input"name="fname" type="text" placeholder="Enter your Name">
-        <input class="input"name="fmobile" type="Mobile no." placeholder="Enter Your Mobile no.">
-        <input class="input"name="faddress" type="text" placeholder="Enter your address">
-        <input class="inputmsg" name="fmsg" type="text" placeholder="Give a feedback">
+        <input class="input" name="fname" type="text" placeholder="Enter your Name" required pattern="[A-Za-z\s]+">
+        <input class="input" name="fmobile" type="tel" placeholder="Enter Your Mobile no." required pattern="[0-9]{10}">
+       <input class="input" name="faddress" type="text" placeholder="Enter your address" required>
+       <input class="inputmsg" name="fmsg" type="text" placeholder="Give a feedback" required>
+
         <input id="complaintIdInput" name="complaintId" type="hidden">
         <button id="submitbtn"  type="submit" onclick="submitFeedback()">Submit</button>
       </form>
     </div>
+   <a style=" text-decoration: none;" href="/homepage"> <div  style="margin-left: 20px;margin-top: 20px; display: flex; gap: 10px; color:black;" ><image width="30px" src="back icon.jpg"><h1>Back</h1></div></a>
   </div>
 
   <script>
-    fetch("/complaindata")
-      .then((data) => data.json())
-      .then((user) => {
-        const userstatus = user.map((user) => {
-          return `
-          <div class="statusbox" style="border:2px solid blue;color:white;font-size:15px;">
-            <h1>${user.complaintId}</h1>
-            <h1>${user.ctype}</h1>
-            <h1>${user.aname}</h1>
-            <h1>${user.idate}</h1>
-            <h1>${user.venrollment}</h1>
-            <div style="margin-left:1150px;">
-              <button onclick="feedback('${user.complaintId}')" style="border-radius:8px;color:white; background-color:blue;padding:10px;">Feedback</button>
-              <button onclick="status('${user.complaintId}')" style="border-radius:8px;color:white; background-color:blue;padding:10px;">Status</button>
-            </div>
-          </div>`;
-        });
+ fetch("/complaindata")
+  .then((data) => data.json())
+  .then((user) => {
+    const userstatus = user.map((user) => {
+      return `
+      <table style="border-collapse: collapse; width: 100%; border: 1px solid #ddd; font-size:15px; margin-top:10px">
+        <tr style="background-color: #f5f5f5;">
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Accused Name</th>
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Accused Branch</th>
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Accused Department</th>
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Incident Date</th>
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Complain Type</th>
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Complain Date</th>
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Complain Id</th>
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Status</th>
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Feedback Form</th>
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Delete</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td style="padding: 8px; border-right: 1px solid black">${user.aname}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.abranch}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.adepartment}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.idate}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.ctype}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.cdate}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.complaintId}</td>
+          <td style="padding: 8px; border-right: 1px solid black">${user.cstatus ? user.cstatus : "Waiting"}</td>
+          <td style="padding-left: 30px; padding-top:8px;padding-bottom:8px;border-right: 1px solid black;"><button onclick="feedback('${user.complaintId}', '${user.cstatus}', this)" style="padding:10px; border-radius:12px; background-color:red; color:white;">Feedback</button></td>
+          <td style="padding-left: 30px; border-left: 1px solid black;"><button onclick="Delete('${user.complaintId}')" style="padding:10px; border-radius:12px; background-color:red; color:white;">Delete</button></td>
+        </tr>
+      </table>
+      `;
+    });
 
-        document.getElementById("userstatus").innerHTML = userstatus.join('');
-      })
-      .catch((err) => {
-        console.log("Error:", err);
-      });
+    document.getElementById("userstatus").innerHTML = userstatus.join('');
+  })
+  .catch((err) => {
+    console.log("Error:", err);
+  });
 
-    function feedback(complaintId) {
-      const feedbackForm = document.getElementById('feedbackForm');
-      if (feedbackForm) {
-        feedbackForm.style.display = 'block';
-        document.getElementById('userstatus').classList.add('blur');
-        document.getElementById('complaintIdInput').value = complaintId;
-      }
-    }
+function feedback(complaintId, cstatus, button) {
+  const feedbackForm = document.getElementById('feedbackForm');
+  if (feedbackForm || cstatus === "Solved") {
+    feedbackForm.style.display = 'block';
+    document.getElementById('userstatus').classList.add('blur');
+    document.getElementById('complaintIdInput').value = complaintId;
+    // Apply animation to the button if needed
+    button.classList.add('animation-class');
+  }
+}
+
+
+
 
     function status(complaintId) {
       fetch("/complaindata")
@@ -74,7 +102,7 @@
           const filteredComplaints = user.filter((complain) => complain.complaintId === complaintId);
           if (filteredComplaints.length > 0) {
             const complain = filteredComplaints[0];
-            if (complain.cstatus === '100%') {
+            if (complain.cstatus === 'Solved') {
               alert("Your complaint is solved. If you have any queries related to this complaint, click on the feedback button to provide your feedback");
             } else {
               const statusMessage = complain.cstatus ? `Complain ID: ${complain.complaintId}\nStatus: ${complain.cstatus}` : `Your complaint is in waiting`;
@@ -98,6 +126,30 @@
         alert('Feedback submitted successfully!');
       }
     }
+      //Delete function
+      function Delete(complaintId) {
+  // Perform the delete operation
+  fetch('/deletecmpln', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ complaintId: complaintId })
+  })
+    .then(response => {
+      if (response.ok) {
+        console.log('Record deleted successfully');
+        // Optionally, you can update the UI or perform any additional actions after the record is deleted.
+      } else {
+        console.error('Error occurred while deleting complaint');
+      }
+    })
+    .catch(error => {
+      console.error('Error occurred while deleting complaint:', error);
+    });
+}
+
+    
   </script>
 </body>
 </html>

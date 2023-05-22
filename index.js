@@ -66,7 +66,7 @@ app.post('/submit', (req, res) => {
   var mobile=req.body.mobile;
   var enrollment=req.body.enrollment;
   var admissionyear=req.body.admissionyear;
-  var department=req.body.admissionyear;
+  var department=req.body.department;
   var confirmpassword=req.body.confirmpassword;
   var image=req.body.image;
   const Branch = req.body.Branch;
@@ -216,6 +216,7 @@ app.get('/profileData', (req, res) => {
     // Extract the user data and send it to the client
     const userData = {
       name: user.name,
+      email:user.email,
       enrollment: user.enrollment,
       department: user.department,
       admissionyear: user.admissionyear,
@@ -269,7 +270,8 @@ app.post('/complain', (req, res) => {
   var vmobile = req.body.vmobile;
   var aname = req.body.aname;
   var abranch = req.body.abranch;
-  var adepartment = req.body.adepartment;
+  var 
+adepartment = req.body.adepartment;
   var idate = req.body.idate;
   var ctype = req.body.ctype;
   var cdate = req.body.cdate;
@@ -280,7 +282,8 @@ app.post('/complain', (req, res) => {
     vmobile: vmobile,
     aname: aname,
     abranch: abranch,
-    adepartment: adepartment,
+    
+adepartment: adepartment,
     idate: idate,
     ctype: ctype,
     cdate: cdate,
@@ -441,12 +444,12 @@ app.get('/feedbackadmin',(req,res)=>{
 //This is a functions to update status
 app.post('/approved', (req, res) => {
   const complaintId = req.body.complaintId;
-  const status = '30%'; // Set the desired status value
-if(buttonvalue===1){
+  const status = 'Approved'; // Set the desired status value
+
   db.collection('complaininfo').updateOne(
     {complaintId: complaintId},
-    { $set: { buttonvalue: 2 
-    ,cstatus:status } },
+    { $set:  
+    {cstatus:status } },
     (err, result) => {
       if (err) {
         console.error('Error occurred while updating status:', err);
@@ -456,20 +459,18 @@ if(buttonvalue===1){
       return res.status(201).send('Status updated successfully');
     }
   );
-}
-else{
-  buttonvalue=2
-}
+
 
 });
 app.post('/process', (req, res) => {
   const complaintId = req.body.complaintId; // Retrieve the complaintId from the request body or query parameters
-  const status = '60%'; // Set the desired status value
-if(buttonvalue===2){
+  const status = 'Process'; // Set the desired status value
+
   db.collection('complaininfo').updateMany(
     { complaintId: complaintId }, // Use the complaintId in the query to filter documents
-    { $set: { buttonvalue: 3 
-    ,cstatus:status} },
+    { $set: 
+    {
+  cstatus:status} },
     (err, result) => {
       if (err) {
         console.error('Error occurred while updating status:', err);
@@ -480,19 +481,15 @@ if(buttonvalue===2){
     }
   );
 }
-else{
-  buttonvalue=2;
-}
-
-});
+);
 app.post('/solved', (req, res) => {
   const complaintId = req.body.complaintId; // Retrieve the complaintId from the request body or query parameters
-  const status = '100%'; // Set the desired status value
-if(buttonvalue===3){
+  const status = 'Solved'; // Set the desired status value
+
   db.collection('complaininfo').updateMany(
     { complaintId: complaintId }, // Use the complaintId in the query to filter documents
     { $set: { cstatus: status  
-    ,  buttonvalue: 3 } },
+     } },
     (err, result) => {
       if (err) {
         console.error('Error occurred while updating status:', err);
@@ -503,25 +500,30 @@ if(buttonvalue===3){
     }
   );
 
+
  
 }
-else{
-  buttonvalue=4;
-}
-db.collection('complaininfo').updateMany(
- // Use the complaintId in the query to filter documents
- { complaintId: complaintId },
-  { $set: { buttonvalue: 4 } },
-  (err, result) => {
-    if (err) {
-      console.error('Error occurred while updating status:', err);
-      return res.status(500).send('Internal Server Error');
+)
+
+app.post('/deletecmpln', (req, res) => {
+  const complaintId = req.body.complaintId; // Retrieve the complaintId from the request body or query parameters
+
+  db.collection('complaininfo').deleteOne(
+    { complaintId: complaintId }, // Use the complaintId in the query to filter documents
+    (err, result) => {
+      if (err) {
+        console.error('Error occurred while deleting complaint:', err);
+        return res.status(500).send('Internal Server Error');
+      }
+      console.log('Record deleted successfully');
+      return res.status(201).send('Delete Record successfully');
     }
-    console.log('Status updated successfully');
-    return res.status(201).send('Status updated successfully');
-  }
-);
-})
+  );
+});
+
+//This is for update your profile 
+
+
 
 
 
