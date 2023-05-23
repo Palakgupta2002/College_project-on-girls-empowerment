@@ -11,84 +11,141 @@
 <body>
 <div id="profile">
     <div class="pro">
-      <div class="left">
-       <img class="image" id="images" src="profile.webp">
+        <div class="left">
+            <img class="image" id="images" src="profile.webp">
 
-       <!------------------------------------------------------------------------>
-       <label for="input"><img class="camera" src="camera.png"></label>
-       <input type="file" action="image/jpg,image/jpeg,image/png" id="input">
-       <p id="name"></p>
-       <button onclick=""></button>  
+            <!------------------------------------------------------------------------>
+            <label for="input"><img class="camera" src="camera.png"></label>
+            <input type="file" action="image/jpg,image/jpeg,image/png" id="input">
+            <p id="name"></p>
+            <button id="updatebtn" onclick="updateProfile()">Update Profile</button>
         </div>
-      <div class="right">
-       <p class="info">INFORMATION</p>
+        <div class="right">
+            <p class="info">INFORMATION</p>
 
-       <div class="EP">
-        <div class="email">
-        <p>Father's name</p>
-        <input type="text" value="" id="father">
+            <div class="EP">
+                <div class="email">
+                    <p>Father's name</p>
+                    <input id="father" value="">
+                </div>
+                <div class="phone">
+                    <p>Mother's name</p>
+                    <input id="mother" value="">
+                </div>
+            </div>
+            <div class="EP">
+                <div class="email">
+                    <p>Email</p>
+                    <input id="email" value="">
+                </div>
+                <div class="phone">
+                    <p>Phone</p>
+                    <input id="mobile" value="">
+                </div>
+            </div>
+            <div class="EP">
+                <div class="email">
+                    <p>Department</p>
+                    <input id="department" value="">
+                </div>
+                <div class="phone">
+                    <p>Branch</p>
+                    <input id="Branch" value="">
+                </div>
+            </div>
+            <div class="EP">
+                <div class="email">
+                    <p>Enrollment No.</p>
+                    <input id="enrollment" value="">
+                </div>
+                <div class="phone">
+                    <p>Admission Year</p>
+                    <input id="admission" value="">
+                </div>
+            </div>
         </div>
-        <div class="phone">
-            <p>Mother's name</p>
-            <input type="text" value="" id="mother">
-        </div>
-      </div>
-      <div class="EP">
-        <div class="email">
-        <p>Email</p>
-        <input type="text" value="" id="email">
-        </div>
-        <div class="phone">
-            <p>Phone</p>
-            <input type="text" value="" id="mobile">
-        </div>
-      </div>
-      <div class="EP">
-        <div class="email">
-        <p>Department</p>
-        <input type="text" value="" id="department">
-        </div>
-        <div class="phone">
-            <p>Branch</p>
-            <input type="text" value="MCA" id="Branch">
-          
-        </div>
-      </div>
-      <div class="EP">
-        <div class="email">
-        <p>Enrollment No.</p>
-        <input type="text" value="" id="enrollment">
-        </div>
-        <div class="phone">
-            <p>Admission Year</p>
-            <input type="text" value="" id="admission">
-        </div>
-      </div>
-      </div>
     </div>
 </div>
 <script>
-  
-  fetch('/profileData').then((data)=>data.json()).then((el)=>{if(el !== undefined && el){showdata(el)}});
-  function showdata(data){
-    if(data?.user !== undefined && data){
-      document.getElementById("enrollment").value=data?.user?.enrollment;
-      document.getElementById("father").value=data?.user?.father;
-      document.getElementById("name").innerText=data?.user?.name;
-      document.getElementById("mother").value=data?.user?.mother;
-      document.getElementById("admission").value=data?.user?.admissionyear;
-      document.getElementById("Branch").value=data?.user?.Branch;
-      document.getElementById("email").value=data?.user?.email;
-      document.getElementById("department").value=data?.user?.department;
-      document.getElementById("mobile").value=data?.user?.mobile;
-     
-}
+    function updateProfile() {
+        const enrollment = document.getElementById("enrollment").value;
+        const father = document.getElementById("father").value;
+        const mother = document.getElementById("mother").value;
+        const admission = document.getElementById("admission").value;
+        const Branch = document.getElementById("Branch").value;
+        const email = document.getElementById("email").value;
+        const department = document.getElementById("department").value;
+        const mobile = document.getElementById("mobile").value;
 
-   
-   
-  }
-  // fetch('/profileData').then((data)=>data.json()).then((el)=>{console.log(el)})
-  showdata();
+        // Create an object with the updated profile data
+        const updatedProfile = {
+            enrollment,
+            father,
+            mother,
+            admissionyear: admission,
+            Branch,
+            email,
+            department,
+            mobile
+        };
+
+        // Send a POST request to update the profile data
+        fetch('/updateProfile', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedProfile)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Handle the response from the server
+            if (data.success) {
+                console.log("Profile updated successfully");
+                // Optionally, you can update the displayed profile data on the page
+                updateDisplayedProfile(updatedProfile);
+            } else {
+                console.log("Profile update failed");
+            }
+        })
+        .catch(error => {
+            console.log("An error occurred while updating the profile:", error);
+        });
+    }
+
+    function updateDisplayedProfile(profile) {
+        document.getElementById("enrollment").value = profile.enrollment;
+        document.getElementById("father").value = profile.father;
+        document.getElementById("mother").value = profile.mother;
+        document.getElementById("admission").value = profile.admissionyear;
+        document.getElementById("Branch").value = profile.Branch;
+        document.getElementById("email").value = profile.email;
+        document.getElementById("department").value = profile.department;
+        document.getElementById("mobile").value = profile.mobile;
+        document.getElementById("name").value = profile.name;
+    }
+
+    fetch('/profileData')
+    .then(data => data.json())
+    .then(el => {
+        if (el !== undefined && el) {
+            showdata(el);
+        }
+    });
+
+    function showdata(data) {
+        if (data?.user !== undefined && data) {
+            document.getElementById("enrollment").value = data?.user?.enrollment;
+            document.getElementById("father").value = data?.user?.father;
+            document.getElementById("name").value = data?.user?.name;
+            document.getElementById("mother").value = data?.user?.mother;
+            document.getElementById("admission").value = data?.user?.admissionyear;
+            document.getElementById("Branch").value = data?.user?.Branch;
+            document.getElementById("email").value = data?.user?.email;
+            document.getElementById("department").value = data?.user?.department;
+            document.getElementById("mobile").value = data?.user?.mobile;
+        }
+    }
 </script>
 </body>
 </html>

@@ -6,12 +6,10 @@ const fs = require('fs')
 const bcrypt = require('bcrypt');
 var bodyParser = require('body-parser')
 const multer=require("multer");
-const { Admin } = require('mongodb');
-const { error } = require('console');
 const app = express()
 var enrollment1;
 
-let buttonvalue=1;
+
 
 //This is for mongoose connection
 mongoose
@@ -55,80 +53,80 @@ db.once('open', () => console.log('Connected to Database'))
 
 
 //This is for users
-app.post('/submit', (req, res) => {
-  var name = req.body.name;
-  var email = req.body.email;
-  var password = req.body.password;
-  var father=req.body.father;
-  var mother=req.body.mother;
-  var alternativeemail=req.body.alternativeemail;
-  var alternativemobile=req.body.alternativemobile;
-  var mobile=req.body.mobile;
-  var enrollment=req.body.enrollment;
-  var admissionyear=req.body.admissionyear;
-  var department=req.body.department;
-  var confirmpassword=req.body.confirmpassword;
-  var image=req.body.image;
-  const Branch = req.body.Branch;
-  enrollment1=req.body.enrollment;
+// app.post('/submit', (req, res) => {
+//   var name = req.body.name;
+//   var email = req.body.email;
+//   var password = req.body.password;
+//   var father=req.body.father;
+//   var mother=req.body.mother;
+//   var alternativeemail=req.body.alternativeemail;
+//   var alternativemobile=req.body.alternativemobile;
+//   var mobile=req.body.mobile;
+//   var enrollment=req.body.enrollment;
+//   var admissionyear=req.body.admissionyear;
+//   var department=req.body.department;
+//   var confirmpassword=req.body.confirmpassword;
+//   var image=req.body.image;
+//   const Branch = req.body.Branch;
+//   enrollment1=req.body.enrollment;
 
-  // Check if user with the same email already exists
-  db.collection('users').findOne({ enrollment:enrollment,email:email }, (err, user) => {
-    if (err) {
-      console.log('Error occurred during user lookup:', err);
-      return res.status(500).send('Internal Server Error');
-    }
+//   // Check if user with the same email already exists
+//   db.collection('users').findOne({ enrollment:enrollment,email:email }, (err, user) => {
+//     if (err) {
+//       console.log('Error occurred during user lookup:', err);
+//       return res.status(500).send('Internal Server Error');
+//     }
 
-    if (user) {
-      console.log('User with the same is already exists');
-      return res.status(400).send('<script>alert("User with the same credentials  is already exists please make sure your enrollment no. and email is your own"); window.location.href="/";</script>');
-    }
+//     if (user) {
+//       console.log('User with the same is already exists');
+//       return res.status(400).send('<script>alert("User with the same credentials  is already exists please make sure your enrollment no. and email is your own"); window.location.href="/";</script>');
+//     }
 
-    // If user doesn't exist, proceed with registration
-    bcrypt.hash(password, 10, (err, hashedPassword) => {
-      if (err) {
-        console.error('Error occurred while hashing password:', err);
-        return res.status(500).send('Internal Server Error');
-      }
+//     // If user doesn't exist, proceed with registration
+//     bcrypt.hash(password, 10, (err, hashedPassword) => {
+//       if (err) {
+//         console.error('Error occurred while hashing password:', err);
+//         return res.status(500).send('Internal Server Error');
+//       }
 
-      var data = {
-        name: name,
-        email: email,
-        mobile:mobile,
-        password: hashedPassword, // Store the hashed password
-        father:father,
-        mother:mother,
-        alternativeemail:alternativeemail,
-        alternativemobile:alternativemobile,
-        enrollment:enrollment,
-        admissionyear:admissionyear,
-        department:department,
-        Branch:Branch ,
-        image:image,
-        confirmpassword:hashedPassword
-      };
-      console.log(password,confirmpassword);
-      if(password==confirmpassword){
-        db.collection('users').insertOne(data, (err, collection) => {
-          if (err) {
-            throw err;
-          }
+//       var data = {
+//         name: name,
+//         email: email,
+//         mobile:mobile,
+//         password: hashedPassword, // Store the hashed password
+//         father:father,
+//         mother:mother,
+//         alternativeemail:alternativeemail,
+//         alternativemobile:alternativemobile,
+//         enrollment:enrollment,
+//         admissionyear:admissionyear,
+//         department:department,
+//         Branch:Branch ,
+//         image:image,
+//         confirmpassword:hashedPassword
+//       };
+//       console.log(password,confirmpassword);
+//       if(password==confirmpassword){
+//         db.collection('users').insertOne(data, (err, collection) => {
+//           if (err) {
+//             throw err;
+//           }
   
-          console.log('Record Inserted Successfully', collection);
-          // res.redirect('/profile');
+//           console.log('Record Inserted Successfully', collection);
+//           // res.redirect('/profile');
        
-          return res.sendFile(__dirname + '/view/homepage/homepage.html');
-        });
-      }
-      else{
-        return res.status(400).send('<script>alert("Make sure Password or Confirm password is match"); window.location.href="/";</script>');
-      } 
-      console.log('Record Inserted Successfully', collection);
-      // return res.sendFile(__dirname + '/view/profile/profile.html');
-          return res.sendFile(__dirname + '/view/homepage/homepage.html');
-    });
-  });
-});
+//           return res.sendFile(__dirname + '/view/homepage/homepage.html');
+//         });
+//       }
+//       else{
+//         return res.status(400).send('<script>alert("Make sure Password or Confirm password is match"); window.location.href="/";</script>');
+//       } 
+//       console.log('Record Inserted Successfully', collection);
+//       // return res.sendFile(__dirname + '/view/profile/profile.html');
+//           return res.sendFile(__dirname + '/view/homepage/homepage.html');
+//     });
+//   });
+// });
 
 
 
@@ -223,7 +221,7 @@ app.get('/profileData', (req, res) => {
       mobile: user.mobile,
       father: user.father,
       image:user.image,
-      Branch:user.Branch,
+      branch:user.branch,
       mother:user.mother,
     };
     
@@ -270,8 +268,7 @@ app.post('/complain', (req, res) => {
   var vmobile = req.body.vmobile;
   var aname = req.body.aname;
   var abranch = req.body.abranch;
-  var 
-adepartment = req.body.adepartment;
+  var adepartment = req.body.adepartment;
   var idate = req.body.idate;
   var ctype = req.body.ctype;
   var cdate = req.body.cdate;
@@ -282,8 +279,7 @@ adepartment = req.body.adepartment;
     vmobile: vmobile,
     aname: aname,
     abranch: abranch,
-    
-adepartment: adepartment,
+    adepartment: adepartment,
     idate: idate,
     ctype: ctype,
     cdate: cdate,
@@ -572,4 +568,139 @@ function generateUniqueId() {
   );
 });
  
+
+app.post('/updateProfile', (req, res) => {
+  const { enrollment, father, mother, admissionyear, Branch, email, department, mobile } = req.body;
+  db.collection('users').findOneAndUpdate(
+    { enrollment: enrollment },
+    { $set: { father, mother, admissionyear, Branch, email, department, mobile } },
+    { new: true },
+    (err, updatedUser) => {
+      if (err) {
+        console.error('Error updating profile:', err);
+        res.json({ success: false });
+      } else {
+        console.log('Profile updated successfully');
+        res.json({ success: true });
+      }
+    }
+  );
+});
+var UserSignup = new mongoose.Schema({
+  name: String,
+  email: String,
+  password: String,
+  father: String,
+  mother: String,
+  alternativeemail: String,
+  alternativemobile: Number,
+  mobile: Number,
+  enrollment: String,
+  admissionyear: String,
+  department: String,
+  confirmpassword: String,
+  img: {
+    data: Buffer,
+    contentType: String,
+  },
+})
+mongoose.model('UserData', UserSignup)
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + '-' + Date.now())
+  },
+})
+
+var upload = multer({ storage: storage })
+app.post('/submit', upload.single('image'), (req, res, next) => {
+  var name = req.body.name
+  var email = req.body.email
+  var password = req.body.password
+  var father = req.body.father
+  var mother = req.body.mother
+  var alternativeemail = req.body.alternativeemail
+  var alternativemobile = req.body.alternativemobile
+  var mobile = req.body.mobile
+  var enrollment = req.body.enrollment
+  var admissionyear = req.body.admissionyear
+  var department = req.body.admissionyear
+  var confirmpassword = req.body.confirmpassword
+  var image = req.body.image
+  const Branch = req.body.Branch
+  enrollment1 = req.body.enrollment
+
+  // Check if user with the same email already exists
+  db.collection('users').findOne(
+    { enrollment: enrollment, email: email },
+    (err, user) => {
+      if (err) {
+        console.log('Error occurred during user lookup:', err)
+        return res.status(500).send('Internal Server Error')
+      }
+
+      if (user) {
+        console.log('User with the same is already exists')
+        return res
+          .status(400)
+          .send(
+            '<script>alert("User with the same credentials  is already exists please make sure your enrollment no. and email is your own"); window.location.href="/";</script>',
+          )
+      }
+      // If user doesn't exist, proceed with registration
+      bcrypt.hash(password, 10, (err, hashedPassword) => {
+        if (err) {
+          console.error('Error occurred while hashing password:', err)
+          return res.status(500).send('Internal Server Error')
+        }
+
+        var data = {
+          name: name,
+          email: email,
+          mobile: mobile,
+          password: hashedPassword, // Store the hashed password
+          father: father,
+          mother: mother,
+          alternativeemail: alternativeemail,
+          alternativemobile: alternativemobile,
+          enrollment: enrollment,
+          admissionyear: admissionyear,
+          department: department,
+          Branch: Branch,
+          img: {
+            data: fs.readFileSync(
+              path.join(__dirname + '/uploads/' + req.file.filename),
+            ),
+            contentType: 'image/png',
+          },
+          confirmpassword: hashedPassword,
+        }
+        if (password == confirmpassword || data.img) {
+          mongoose
+            .model('UserData', UserSignup)
+            .create(data)
+            .then((err, item) => {
+              if (err) {
+                console.log(err)
+              } else {
+                // item.save();
+                res.redirect('/')
+              }
+            })
+        } else {
+          return res
+            .status(400)
+            .send(
+              '<script>alert("Make sure Password or Confirm password is match"); window.location.href="/";</script>',
+            )
+        }
+        console.log('Record Inserted Successfully', collection)
+        
+        return res.sendFile(__dirname + '/view/homepage/homepage.html')
+      })
+    },
+  )
+})
 

@@ -10,7 +10,7 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 		<div class="signup">
-			<form action="/submit" method="POST">
+			<form action="/submit" method="POST" enctype="multipart/form-data">
 				<label for="chk" aria-hidden="true">Register</label>
 				<div id="inputbox">
 		
@@ -43,7 +43,7 @@
 				<div id="btndiv">
 					
 				<input name="image" type="file" action="image/jpg,image/jpeg,image/png" id="input">
-				<button>Submit</button>
+				<button type="submit">Submit</button>
 				</div>
 			</form>
 		</div>

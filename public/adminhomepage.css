@@ -151,10 +151,11 @@ body{
     margin-top: 50px;
     font-size: 15px;
     color: white;
-    border: 2px solid black;
+    border: 2px solid rgb(255, 231, 231);
     margin-left: -190px;
-    padding: 30px;
-    position: fixed;
+    padding: 20px;
+    position: fixed;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
   }
   #userfeedback{
     margin-top: 50px;
