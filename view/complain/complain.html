@@ -1,123 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Complain_dashboard</title>
-    <link rel="stylesheet" type="text/css" href="complain.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="complain.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open Sans"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="start">
-        <div class="nav">
-            <div class="left">
-              <div class="home">
-              <a href="/homepage"><i class="fa fa-home"></i></a>
-              <a href="/homepage">Home</a>
-              </div>
-              <div class="home">
-              <a href="/complainpage"><i class="fa fa-comment"></i></a>
-              <a href="/complainpage">Complain</a>
-              </div>
-              <div class="home">
-              <a href="/policy"><i class="fa fa-shield"></i></a>
-              <a href="/policy">Policy</a>
-              </div>
-              <div class="home">
-              <a href="/login"><i class="fa fa-sign-in"></i></a>
-              <a class="/login" href="login.html">Login</a>
-              </div>
-             </div>
-            <div class="right">
-            <a class="profile" href="/profile"><i class="fa fa-user"></i></a>
-            <a class="pro" href="/profile">Profile</a>
-            </div>
+      <div class="nav">
+        <div class="left">
+          <div class="home">
+            <a href="/homepage"><i class="fa fa-home"></i></a>
+            <a href="/homepage">Home</a>
+          </div>
+          <div class="home">
+            <a href="/complainpage"><i class="fa fa-comment"></i></a>
+            <a href="/complainpage">Complain</a>
+          </div>
+          <div class="home">
+            <a href="/policy"><i class="fa fa-shield"></i></a>
+            <a href="/policy">Policy</a>
+          </div>
+          <div class="home">
+            <a href="/login"><i class="fa fa-sign-in"></i></a>
+            <a class="/login" href="login.html">Login</a>
+          </div>
         </div>
-    <!------------------------------------------------------------------------------------------>
+        <div class="right">
+          <a class="profile" href="/profile"><i class="fa fa-user"></i></a>
+          <a class="pro" href="/profile">Profile</a>
+        </div>
+      </div>
+      <!------------------------------------------------------------------------------------------>
 
-    <div class="section">
+      <div class="section">
         <div class="part-1">
-          <img class="women" src="women.png">
-          
-          <p>Madhav Institute of Technology &amp; Science, Gwalior (M.P.), INDIA 
-            <br>
-            
-              माधव प्रौद्योगिकी एवं विज्ञान संस्थान, ग्वालियर (म.प्र.), भारत 
+          <img class="women" src="women.png" />
+
+          <p>
+            Madhav Institute of Technology &amp; Science, Gwalior (M.P.), INDIA
+            <br />
+
+            माधव प्रौद्योगिकी एवं विज्ञान संस्थान, ग्वालियर (म.प्र.), भारत
           </p>
-          <img class="logo" src="mits logo.png">
-         
+          <img class="logo" src="mits logo.png" />
         </div>
+      </div>
     </div>
-</div>
-  <!---------------------------------------------- Part second -------------------------------------------------------------------->
-   <div class="part-2">
-  <form action="/complain" method="POST" >
-    <h3>Complaints Registration Form</h3>
-    <h4>Victim's Details</h4>
-  
-    <div class="victim">
-        
-        <div class="name">
-        <p>Enrollment</p>
-        <input name="venrollment" id="venrollment" type="text" placeholder="Enter Your enrollment">
+    <!---------------------------------------------- Part second -------------------------------------------------------------------->
+    <div class="part-2">
+      <form action="/complain" method="POST">
+        <h3>Complaints Registration Form</h3>
+        <h4>Victim's Details</h4>
+
+        <div class="victim">
+          <div class="name">
+            <p>Enrollment</p>
+            <input
+              name="venrollment"
+              id="venrollment"
+              type="text"
+              placeholder="Enter Your enrollment"
+            />
+          </div>
+          <div class="mobile">
+            <p>Mobile No.</p>
+            <input
+              name="vmobile"
+              type="tel"
+              maxlength="10"
+              minlength="10"
+              placeholder="Enter Your Mobile No."
+            />
+          </div>
         </div>
-        <div class="mobile">
-         <p>Mobile No.</p>
-        <input name="vmobile" type="tel" maxlength="10" minlength="10" placeholder="Enter Your Mobile No.">
+        <h5>Accused's Details</h5>
+        <div class="accused">
+          <div class="names">
+            <p>Accused Name</p>
+            <input name="aname" type="text" placeholder="Enter Name" />
+          </div>
+          <div class="branch">
+            <p>Accused Branch</p>
+            <input name="abranch" type="text" placeholder="Branch" />
+          </div>
         </div>
-
+        <div class="accused">
+          <div class="department">
+            <p>Accused Department</p>
+            <input name="adepartment" type="text" placeholder="Department" />
+          </div>
+          <div class="admission">
+            <p>Incident Date</p>
+            <input
+              name="idate"
+              type="datetime-local"
+              placeholder="Date and Time"
+            />
+          </div>
+        </div>
+        <div class="accused">
+          <div class="ctype">
+            <p>Complain Type</p>
+            <input name="ctype" type="text" placeholder="Type" />
+          </div>
+          <div class="cdate">
+            <p>Complain Date</p>
+            <input name="cdate" type="date" placeholder="mm/dd/yyyy" />
+          </div>
+        </div>
+        <div class="accuse">
+          <p>Insert Complete Details Of The Incident</p>
+          <textarea
+            name="message"
+            class="message"
+            rows="15"
+            cols="147"
+            placeholder="Start From Here"
+          ></textarea>
+        </div>
+        <button>Submit</button>
+      </form>
     </div>
-      <h5>Accused's Details</h5>
-    <div class="accused">
-      <div class="names">
-        <p>Accused Name</p>
-        <input name="aname" type="text" placeholder="Enter Name">
-      </div>
-      <div class="branch">
-        <p>Accused Branch</p>
-        <input name="abranch" type="text" placeholder="Branch">
-      </div>
-      </div>
-      <div class="accused">
-      <div class="department">
-        <p>Accused Department</p>
-        <input name="adepartment" type="text" placeholder="Department">
-      </div>
-      <div class="admission">
-        <p>Incident Date</p>
-        <input name="idate" type="datetime-local" placeholder="Date and Time">
-      </div>
-      </div>
-      <div class="accused">
-      <div class="ctype">
-        <p>Complain Type</p>
-        <input name="ctype" type="text" placeholder="Type">
-      </div>
-      <div class="cdate">
-        <p>Complain Date</p>
-        <input name="cdate" type="date" placeholder="mm/dd/yyyy">
-      </div>
-      </div>
-       <div class="accuse">
-      <p>Insert Complete Details Of The Incident</p>
-      <textarea name="message" class="message" rows="15" cols="147" placeholder="Start From Here"></textarea>
-      </div>
-      <button>Submit</button>
-  </form>
-    </div>
-    
-
- 
-</body>
-<script>
-  fetch('/profileData').then((data)=>data.json()).then((el)=>{
-    document.getElementById("venrollment").value=el?.user?.enrollment;
-
-  })
+  </body>
+  <script>
+    fetch("/profileData")
+      .then((data) => data.json())
+      .then((el) => {
+        document.getElementById("venrollment").value = el?.user?.enrollment;
+      });
   </script>
 </html>
-
-  

@@ -144,6 +144,10 @@
             document.getElementById("email").value = data?.user?.email;
             document.getElementById("department").value = data?.user?.department;
             document.getElementById("mobile").value = data?.user?.mobile;
+            let image = document.getElementById('images');
+    
+    
+            image.src = "data:image/png;base64," + data.user.image;
         }
     }
 </script>
