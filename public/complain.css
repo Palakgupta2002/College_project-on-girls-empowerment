@@ -18,10 +18,10 @@ body{
     align-items: center;
     position: fixed;
     left: 0px;
-    
     z-index: 1000;
-    height: 580px;
-    /* background: linear-gradient(to bottom, #0f0c39, #302b90, #24243e); */
+    background: linear-gradient(to bottom, #0f0c39, #302b90, #24243e);;
+    height: 100vh;
+    
 }
 .left
 {
@@ -37,7 +37,9 @@ body{
     font-size: 7px;
     padding-top: 3px;
     color: aliceblue;
+    
 }
+
 .left i
 {
     font-size: 27px;
@@ -52,7 +54,8 @@ body{
 }
 .home:hover
 {
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+   /* background-color: thistle;*/
+   background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
     opacity: 0.5;
     padding: 5px;
 }
@@ -68,10 +71,10 @@ body{
 }
 .right:hover
 {
-    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+   background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
    padding: 15px;
    margin-bottom: 10px;
-    opacity: 0.5;
+   opacity: 0.5;
 }
 .right a
 {

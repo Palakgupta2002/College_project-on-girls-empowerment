@@ -8,6 +8,7 @@ var bodyParser = require("body-parser");
 const multer = require("multer");
 const app = express();
 var enrollment1;
+var email1;
 
 //This is for mongoose connection
 mongoose
@@ -61,7 +62,7 @@ db.once("open", () => console.log("Connected to Database"));
 //   var department=req.body.department;
 //   var confirmpassword=req.body.confirmpassword;
 //   var image=req.body.image;
-//   const Branch = req.body.Branch;
+//   const branch = req.body.branch;
 //   enrollment1=req.body.enrollment;
 
 //   // Check if user with the same email already exists
@@ -95,7 +96,7 @@ db.once("open", () => console.log("Connected to Database"));
 //         enrollment:enrollment,
 //         admissionyear:admissionyear,
 //         department:department,
-//         Branch:Branch ,
+//         branch:branch ,
 //         image:image,
 //         confirmpassword:hashedPassword
 //       };
@@ -128,6 +129,7 @@ app.post("/login", (req, res) => {
   var password = req.body.password;
   var enrollment = req.body.enrollment;
   enrollment1 = req.body.enrollment;
+  email1=req.body.email;
 
   var logindata = {
     email: email,
@@ -208,7 +210,7 @@ app.get("/profileData", (req, res) => {
       mobile: user.mobile,
       father: user.father,
       image: user.img.data,
-      branch: user.Branch,
+      branch: user.branch,
       mother: user.mother,
     };
 
@@ -298,6 +300,23 @@ app.post("/complain", (req, res) => {
       );
   });
 });
+app.post("/complainstatus", (req, res) => {
+  const complaintId = req.body.complaintId;
+  const status = "Closed"; // Set the desired status value
+
+  db.collection("complaininfo").updateOne(
+    { complaintId: complaintId },
+    { $set: { cstatus: status } },
+    (err, result) => {
+      if (err) {
+        console.error("Error occurred while updating status:", err);
+        return res.status(500).send("Internal Server Error");
+      }
+      console.log("Status updated successfully");
+      return res.status(201).send("Status updated successfully");
+    }
+  );
+});
 
 //api for complain data
 app.get("/complaindata", (req, res) => {
@@ -327,6 +346,28 @@ app.get("/complaindataadmn", (req, res) => {
     .catch((err) => {
       console.log(err, "error at get complain data");
       res.status(500).send("Internal Server Error");
+    });
+});
+app.patch('/hiddenstatus', (req, res) => {
+  const { complaintId, cstatus } = req.body;
+
+  // Update the status in the MongoDB collection
+  // Replace `YourModel` with the appropriate Mongoose model for your collection
+  db.collection("complaininfo").findOneAndUpdate(
+    { complaintId },
+    { $set: { cstatus } },
+    { new: true }
+  )
+    .then(updatedComplaint => {
+      if (updatedComplaint) {
+        res.status(200).json({ message: 'Status updated successfully' });
+      } else {
+        res.status(404).json({ message: 'Complaint not found' });
+      }
+    })
+    .catch(error => {
+      console.error('An error occurred while updating status:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
     });
 });
 
@@ -389,7 +430,7 @@ app.post("/adminlogin", (req, res) => {
 });
 //THis is for feedback Data
 app.post("/feedback", (req, res) => {
-  const complaintId = req.body.complaintId;
+  const fid = req.body.complaintId;
   const fenrollment = enrollment1;
   const fname = req.body.fname;
   const fmobile = req.body.fmobile;
@@ -397,7 +438,7 @@ app.post("/feedback", (req, res) => {
   const fmsg = req.body.fmsg;
 
   var feedback = {
-    complaintId: complaintId,
+    fid: fid,
     fname: fname,
     fmobile: fmobile,
     faddress: faddress,
@@ -405,7 +446,7 @@ app.post("/feedback", (req, res) => {
     fenrollment: fenrollment,
   };
 
-  db.collection("feedbackdata").insertOne(feedback, (err, result) => {
+  db.collection("feedback").insertOne(feedback, (err, result) => {
     if (err) {
       console.log("An error occurred while inserting the feedback:", err);
       return res.status(500).send("Error occurred while submitting feedback");
@@ -422,9 +463,9 @@ app.post("/feedback", (req, res) => {
       );
   });
 });
-//This is for feedbackdata to send admin
+//This is for feedback to send admin
 app.get("/feedbackadmin", (req, res) => {
-  db.collection("feedbackdata")
+  db.collection("feedback")
     .find()
     .toArray()
     .then((response) => {
@@ -556,7 +597,7 @@ app.post("/updateProfile", (req, res) => {
     father,
     mother,
     admissionyear,
-    Branch,
+    branch,
     email,
     department,
     mobile,
@@ -568,7 +609,7 @@ app.post("/updateProfile", (req, res) => {
         father,
         mother,
         admissionyear,
-        Branch,
+        branch,
         email,
         department,
         mobile,
@@ -599,6 +640,7 @@ var UserSignup = new mongoose.Schema({
   admissionyear: String,
   department: String,
   confirmpassword: String,
+  branch:String,
   img: {
     data: Buffer,
     contentType: String,
@@ -629,7 +671,7 @@ app.post("/submit", upload.single("image"), (req, res, next) => {
   var department = req.body.admissionyear;
   var confirmpassword = req.body.confirmpassword;
   var image = req.body.image;
-  const Branch = req.body.Branch;
+  const branch = req.body.branch;
   enrollment1 = req.body.enrollment;
 
   // Check if user with the same email already exists
@@ -668,7 +710,7 @@ app.post("/submit", upload.single("image"), (req, res, next) => {
           enrollment: enrollment,
           admissionyear: admissionyear,
           department: department,
-          Branch: Branch,
+          branch: branch,
           img: {
             data: fs.readFileSync(
               path.join(__dirname + "/uploads/" + req.file.filename)
@@ -677,6 +719,7 @@ app.post("/submit", upload.single("image"), (req, res, next) => {
           },
           confirmpassword: hashedPassword,
         };
+        
         if (password == confirmpassword || data.img) {
           mongoose
             .model("users", UserSignup)
@@ -696,6 +739,7 @@ app.post("/submit", upload.single("image"), (req, res, next) => {
               '<script>alert("Make sure Password or Confirm password is match"); window.location.href="/homepage";</script>'
             );
         }
+      
         console.log("Record Inserted Successfully", collection);
 
         return res.sendFile(__dirname + "/view/homepage/homepage.html");

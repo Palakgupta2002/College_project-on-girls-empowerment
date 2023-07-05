@@ -50,7 +50,7 @@
                 </div>
                 <div class="phone">
                     <p>Branch</p>
-                    <input id="Branch" value="">
+                    <input id="branch" value="">
                 </div>
             </div>
             <div class="EP">
@@ -72,7 +72,7 @@
         const father = document.getElementById("father").value;
         const mother = document.getElementById("mother").value;
         const admission = document.getElementById("admission").value;
-        const Branch = document.getElementById("Branch").value;
+        const branch = document.getElementById("branch").value;
         const email = document.getElementById("email").value;
         const department = document.getElementById("department").value;
         const mobile = document.getElementById("mobile").value;
@@ -83,7 +83,7 @@
             father,
             mother,
             admissionyear: admission,
-            Branch,
+            branch,
             email,
             department,
             mobile
@@ -118,7 +118,7 @@
         document.getElementById("father").value = profile.father;
         document.getElementById("mother").value = profile.mother;
         document.getElementById("admission").value = profile.admissionyear;
-        document.getElementById("Branch").value = profile.Branch;
+        document.getElementById("branch").value = profile.branch;
         document.getElementById("email").value = profile.email;
         document.getElementById("department").value = profile.department;
         document.getElementById("mobile").value = profile.mobile;
@@ -140,7 +140,7 @@
             document.getElementById("name").value = data?.user?.name;
             document.getElementById("mother").value = data?.user?.mother;
             document.getElementById("admission").value = data?.user?.admissionyear;
-            document.getElementById("Branch").value = data?.user?.Branch;
+            document.getElementById("branch").value = data?.user?.branch;
             document.getElementById("email").value = data?.user?.email;
             document.getElementById("department").value = data?.user?.department;
             document.getElementById("mobile").value = data?.user?.mobile;

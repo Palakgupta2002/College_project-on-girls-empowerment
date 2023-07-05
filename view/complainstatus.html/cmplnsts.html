@@ -67,9 +67,11 @@
           <td style="padding: 8px; border-right: 1px solid black">${user.ctype}</td>
           <td style="padding: 8px; border-right: 1px solid black">${user.cdate}</td>
           <td style="padding: 8px; border-right: 1px solid black">${user.complaintId}</td>
-          <td style="padding: 8px; border-right: 1px solid black">${user.cstatus ? user.cstatus : "Waiting"}</td>
-          <td style="padding-left: 30px; padding-top:8px;padding-bottom:8px;border-right: 1px solid black;"><button onclick="feedback('${user.complaintId}', '${user.cstatus}', this)" style="padding:10px; border-radius:12px; background-color:red; color:white;">Feedback</button></td>
-          <td style="padding-left: 30px; border-left: 1px solid black;"><button onclick="Delete('${user.complaintId}')" style="padding:10px; border-radius:12px; background-color:red; color:white;">Delete</button></td>
+          <td id="status" style="padding: 8px; border-right: 1px solid black">${user.cstatus ? user.cstatus : "Waiting"}</td>
+          <td  style="padding-left: 30px; padding-top:8px;padding-bottom:8px;border-right: 1px solid black;"><button onclick="feedback('${user.complaintId}', '${user.cstatus}', this)" style="padding:10px; border-radius:12px; background-color:red; color:white;">Feedback</button></td>
+          <td style="padding-left: 30px; border-left: 1px solid black;">
+  <button onclick="Close('${user.complaintId}','${user.cstatus}')" style="padding:10px; border-radius:12px; background-color:red; color:white;">Close</button>
+</td>
         </tr>
       </table>
       `;
@@ -126,28 +128,35 @@ function feedback(complaintId, cstatus, button) {
         alert('Feedback submitted successfully!');
       }
     }
-      //Delete function
-      function Delete(complaintId) {
-  // Perform the delete operation
-  fetch('/deletecmpln', {
-    method: 'POST',
+    function Close(complaintId, cstatus) {
+  const updatedStatus = "Closed";
+
+  // Update the status in the HTML
+  document.getElementById("status").innerText = updatedStatus;
+
+  // Make a PATCH request to update the status in the database
+  fetch("/complainstatus", {
+    method: 'post',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ complaintId: complaintId })
+    body: JSON.stringify({
+      complaintId: complaintId,
+      cstatus: updatedStatus
+    })
   })
     .then(response => {
       if (response.ok) {
-        console.log('Record deleted successfully');
-        // Optionally, you can update the UI or perform any additional actions after the record is deleted.
+        console.log("Status updated successfully");
       } else {
-        console.error('Error occurred while deleting complaint');
+        console.log("Failed to update status");
       }
     })
     .catch(error => {
-      console.error('Error occurred while deleting complaint:', error);
+      console.error("An error occurred while updating status:", error);
     });
 }
+
 
     
   </script>

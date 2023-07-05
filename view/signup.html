@@ -3,6 +3,9 @@
 
 <head>
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 </head>
 
 <body>
@@ -11,21 +14,23 @@
 
 		<div class="signup">
 			<form action="/submit" method="POST" enctype="multipart/form-data">
-				<label for="chk" aria-hidden="true">Register</label>
+				<label for="chk" class="chk" aria-hidden="true">Register</label>
 				<div id="inputbox">
-		
+
 
 					<input name="name" type="text" pattern="[A-Za-z\s]+" placeholder="Name" required="">
-                    <input name="father" type="text" pattern="[A-Za-z\s]+" placeholder="Father's Name" required="">
+					<input name="father" type="text" pattern="[A-Za-z\s]+" placeholder="Father's Name" required="">
 					<input name="mother" type="text" pattern="[A-Za-z\s]+" placeholder="Mother's Name" required="">
 					<input name="email" type="email" placeholder="Email" required="">
 					<input name="mobile" type="tel" pattern="[6-9]\d{9}" placeholder="Mobile No." required>
-                    <input name="alternativemobile"  pattern="[6-9]\d{9}" type="tel" placeholder="Alternative Mobile No." required="">
-					<input name="enrollment" type="text"  placeholder="Enrollment Number" required>
-                    <input name="admissionyear" placeholder="Addmission_Year" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />
+					<input name="alternativemobile" pattern="[6-9]\d{9}" type="tel" placeholder="Alternative Mobile No."
+						required="">
+					<input name="enrollment" type="text" placeholder="Enrollment Number" required>
+					<input name="admissionyear" placeholder="Addmission_Year" class="textbox-n" type="text"
+						onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />
 					<input name="department" type="text" placeholder="Department" required="">
 
-					<select onchange="changePlaceholderColor()" name="Branch" id="branch" required>
+					<select onchange="changePlaceholderColor()" name="branch" id="branch" required>
 						<option value="" disabled selected>Select Branch</option>
 						<option value="MCA">MCA</option>
 						<option value="MBA">MBA</option>
@@ -36,27 +41,31 @@
 						<option value="Information Technology">Information Technology</option>
 						<option value="Electronics">Electronics</option>
 					</select>
-					<input id="password" name="password" type="text" placeholder="Password" required="">
-					<input id="cnfrmpswrd" name="confirmpassword" type="text" placeholder=" Confirm Password" required="">
+					<input id="password" name="password" type="password"  placeholder="Password" required="">
+					<input id="cnfrmpswrd" type="password" name="confirmpassword"  type="text" placeholder=" Confirm Password"
+						require="">
 				</div>
-				
+
 				<div id="btndiv">
-					
-				<input name="image" type="file" action="image/png" id="input">
-				<button type="submit">Submit</button>
+					<label class="custom-file-upload">
+						<input name="image" type="file" action="image/png" id="input">
+						<i class="fa fa-cloud-upload"></i> Upload Image
+					</label>
+
+					<button type="submit">Submit</button>
 				</div>
 			</form>
 		</div>
-		
+
 
 		<div class="login">
 			<form action="/login" method="POST">
 				<label for="chk" aria-hidden="true">Login</label>
 				<div id="logininputbox">
-				<input type="email" name="email" placeholder="Email" required="">
-				<input type="text"  name="enrollment" placeholder="Enrollment" required="">
-				<input type="password" name="password" placeholder="Password" required="">
-			    </div>
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="text" name="enrollment" placeholder="Enrollment" required="">
+					<input type="password" name="password" placeholder="Password" required="">
+				</div>
 				<button>Login</button>
 			</form>
 		</div>
@@ -66,8 +75,8 @@
 </html>
 <script>
 	function changePlaceholderColor() {
-  var selectElement = document.getElementById('branch');
-  selectElement.style.color = selectElement.value ? 'white' : '#999999';
-}
+		var selectElement = document.getElementById('branch');
+		selectElement.style.color = selectElement.value ? 'white' : '#999999';
+	}
 
 </script>

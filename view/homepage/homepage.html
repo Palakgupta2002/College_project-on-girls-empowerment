@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
-    <link rel="stylesheet" href="homepage.css">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="homepage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -16,24 +16,24 @@
         <div class="left">
             <div class="home">
         <a href="/homepage"><i class="fa fa-home"></i></a>
-          <a href="/homepage">Home</a>
+          <a href="hoepage">Home</a>
         </div>
         <div class="home">
           <a href="/complainpage"><i class="fa fa-comment"></i></a>
           <a href="/complainpage">Complain</a>
         </div>
         <div class="home">
-          <a href="#"><i class="fa fa-shield"></i></a>
-          <a href="#">Policy</a>
-          </div>
-          <div class="home">
-          <a href="/complainstatus"><i class="fa fa-sign-in"></i></a>
+          <a href="/complainstatus"><i class="fa fa-shield"></i></a>
           <a href="/complainstatus">C-Status</a>
           </div>
           <div class="home">
-          <a href="/signup"><i class="fa fa-question-circle"></i></a>
-          <a href="/signup">logout</a>
+          <a href="/signup"><i class="fa fa-comments"></i></a>
+          <a class="log" href="/signup">logout</a>
           </div>
+         <!-- <div class="home">
+          <a href="#"><i class="fa fa-question-circle"></i></a>
+          <a href="#">log out</a>
+          </div>-->
          
 
           
@@ -47,9 +47,10 @@
             
         </div>
     </div>
+    <!------------------------------------------------------------------------------------------------------->
 
     <div class="section">
-       <div class="part-1">
+        <div class="part-1">
           <img class="women" src="women.png">
           
           <p>Madhav Institute of Technology &amp; Science, Gwalior (M.P.), INDIA 
@@ -61,7 +62,7 @@
          
         </div>
     </div>
-  </div> 
+  </div>
 
     <!-------------------------------------------------------------------------------------------------------->
     
@@ -69,13 +70,19 @@
     <div class="part-2">
       
     <div class="img-1">
-      <img src="banner-1.jpg" width="100%">
+      <img src="banner-5.jpg" width="100%" height="340px">
     </div>
     <div class="img-1">
-     <img src="banner-2.jpg" width="100%">
+     <img src="banner-2.jpg" width="100%" height="340px">
     </div>
     <div class="img-1">
-      <img src="banner-3.jpg" width="100%">
+      <img src="banner-1.jpg" width="100%" height="340px">
+    </div>
+    <div class="img-1">
+      <img src="banner-4.png" width="100%" height="340px">
+    </div>
+    <div class="img-1">
+      <img src="banner-3.jpg" width="100%" height="340px">
     </div>
      
       <span class="prev" onclick="controller(-1)">&#10094</span>
@@ -84,7 +91,7 @@
 <!------------------------------------------------------------------------------------------------------------>
 
     <div class="part-3">
-      <h4>GIRLS ISSUE</h4>
+      <h4>GIRLS <span>ISSUE</span></h4>
       <div class="top">
       <div class="molest">
       <img src="molest.svg">
@@ -95,7 +102,7 @@
         <p>Mental Stress</p>
       </div>
       <div class="acid">
-        <img src="acid_attack.svg">
+        <img src="acid_attack.jpg">
         <p>Acid Attack</p>
       </div>
     </div>
@@ -109,103 +116,110 @@
         <p>Rape/Attempt To Rape</p>
       </div>
       <div class="harrase">
-        <img src="harassement.svg">
+        <img src="harassement.jpg">
         <p>harassement</p>
       </div>
     </div>
 
     </div>
     <!---------------------------------------------------------------------------------------------------------->
+ <footer>
+   <div>
     
-    <footer class="footer-distributed">
+<footer class="footer-distributed">
+
+			<div class="footer-left">
+
+				<h3>ONLINE GIRLS COMPLAIN<span>PORTAL</span></h3>
+
+				<p class="footer-links">
+					<a href="#" class="link-1">Home</a>
+					
+					<a href="#">Blog</a>
+				
+					<a href="#">Pricing</a>
+				
+					<a href="#">About</a>
+					
+					<a href="#">Faq</a>
+					
+					<a href="#">Contact</a>
+				</p>
+
+				<p class="footer-company-name">MITS GWALIOR MADHYA PRADESH</p>
+			</div>
+
+			<div class="footer-center">
+
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p><span>MITS COLLEGE</span> GOLE KA MANDIR GWALIOR MADHYA PRADESH</p>
+				</div>
+
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>9301950530</p>
+				</div>
+
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="mailto:support@company.com">support@mitsgwalior.in</a></p>
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p class="footer-company-about">
+					<span>About the company</span>
+					Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+				</p>
+
+				<div class="footer-icons">
+
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="#"><i class="fa fa-github"></i></a>
+
+				</div>
+
+			</div>
+
+		</footer>
+   </div>
+
+   
+  </footer>
+    <script >
+      let flag=0;
+function controller(x)
+{
+    flag=flag+x;
+    slideshow(flag);
     
-          <div class="footer-left">
-    
-            <h3>Company<span>logo</span></h3>
-    
-            <p class="footer-links">
-              <a href="#" class="link-1">Home</a>
-              
-              <a href="#">Blog</a>
-            
-              <a href="#">Pricing</a>
-            
-              <a href="#">About</a>
-              
-              <a href="#">Faq</a>
-              
-              <a href="#">Contact</a>
-            </p>
-    
-            <p class="footer-company-name">Company Name © 2015</p>
-          </div>
-    
-          <div class="footer-center">
-    
-            <div>
-              <i class="fa fa-map-marker"></i>
-              <p><span>444 S. Cedros Ave</span> Solana Beach, California</p>
-            </div>
-    
-            <div>
-              <i class="fa fa-phone"></i>
-              <p>+1.555.555.5555</p>
-            </div>
-    
-            <div>
-              <i class="fa fa-envelope"></i>
-              <p><a href="mailto:support@company.com">support@company.com</a></p>
-            </div>
-    
-          </div>
-    
-          <div class="footer-right">
-    
-            <p class="footer-company-about">
-              <span>About the company</span>
-              Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-            </p>
-    
-            <div class="footer-icons">
-    
-              <a href="#"><i class="fa fa-facebook"></i></a>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-              <a href="#"><i class="fa fa-linkedin"></i></a>
-              <a href="#"><i class="fa fa-github"></i></a>
-    
-            </div>
-    
-          </div>
-    
-        </footer>
-    <script >let flag=0;
-      function controller(x)
-      {
-          flag=flag+x;
-          slideshow(flag);
-          
-      }
-      slideshow(flag);
-      
-      function slideshow(num)
-      {
-          let image=document.getElementsByClassName('img-1');
-          if(num==image.length)
-          {
-              flag=0;
-              num=0;
-          }
-          if(num<0)
-          {
-              flag=image.length-1;
-              num=image.length-1;
-          }
-          for(let y of image)
-          {
-              y.style.display="none";
-          }
-          image[num].style.display="block";
-      }
-      </script>
+}
+slideshow(flag);
+
+function slideshow(num)
+{
+    let image=document.getElementsByClassName('img-1');
+    if(num==image.length)
+    {
+        flag=0;
+        num=0;
+    }
+    if(num<0)
+    {
+        flag=image.length-1;
+        num=image.length-1;
+    }
+    for(let y of image)
+    {
+        y.style.display="none";
+    }
+    image[num].style.display="block";
+}
+    </script>
 </body>
 </html>

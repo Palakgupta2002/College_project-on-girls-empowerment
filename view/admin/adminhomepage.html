@@ -86,7 +86,7 @@
           <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Approved</th>
           <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Process</th>
           <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd; border-right: 1px solid black;">Solved</th>
-          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">reopen</th>
+          <th style="color:black; padding: 8px; text-align: left; border-bottom: 1px solid #ddd;">Delete</th>
         </tr>
         <tr style="border-bottom: 1px solid #ddd;">
           <td style="padding: 8px; border-right: 1px solid black">${user.aname}</td>
@@ -97,10 +97,15 @@
           <td style="padding: 8px; border-right: 1px solid black">${user.cdate}</td>
           <td style="padding: 8px; border-right: 1px solid black">${user.complaintId}</td>
           <td style="padding: 8px; border-right: 1px solid black">${user.cstatus ? user.cstatus : "Waiting"}</td>
+          <div>
+            <div style="display:flex">
          <td><button style="border-radius:1px solid black;background-color:red;color:white;padding:8px;"  onclick="updateStatus('${user.complaintId}',this)">Approved</button></td>
          <td><button style="border-radius:1px solid black;background-color:red;color:white;padding:8px;" onclick="updateStatus1('${user.complaintId}',this)">Process</button></td>
          <td><button style="border-radius:1px solid black;background-color:red;color:white;padding:8px;" onclick="updateStatus2('${user.complaintId}',this)">Solved</button></td>
-         <td><button style="border-radius:1px solid black;background-color:red;color:white;padding:8px;" onclick="updateStatus2('${user.complaintId}',this)">Reopen</button></td>
+         <td ><button onclick="Delete('${user.complaintId}')" style="border-radius:1px solid black;background-color:red;color:white;padding:8px;">Delete</button></td>
+        </div>
+         </div>
+         
         </tr>
       </table>
       `;
@@ -218,5 +223,28 @@ function updateStatus2(complaintId, button) {
       console.error('Error occurred while updating status:', error);
     });
 }
+ //Delete function
+ function Delete(complaintId) {
+  // Perform the delete operation
+  fetch('/deletecmpln', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ complaintId: complaintId })
+  })
+    .then(response => {
+      if (response.ok) {
+        console.log('Record deleted successfully');
+        // Optionally, you can update the UI or perform any additional actions after the record is deleted.
+      } else {
+        console.error('Error occurred while deleting complaint');
+      }
+    })
+    .catch(error => {
+      console.error('Error occurred while deleting complaint:', error);
+    });
+}
+
 </script>
 </html>
