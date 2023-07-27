@@ -12,7 +12,7 @@ var email1;
 
 //This is for mongoose connection
 mongoose
-  .connect("mongodb://127.0.0.1/users", {
+  .connect("mongodb+srv://shanvig819:AD4FjqAOShTATJWQ@cluster0.fvxxlhl.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
