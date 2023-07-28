@@ -231,5 +231,22 @@ Key Features of the Admin Dashboard:
 
 The Admin Dashboard empowers administrators to streamline the complaint resolution process, enhance user satisfaction, and foster transparent communication between administrators and users. By providing a centralized platform for managing complaints and feedback, the dashboard enables administrators to take prompt and effective actions, leading to better user experiences and improved services.</p>
 <img src="https://www.linkpicture.com/q/Screenshot-377.png">
+ <hr>
+
+<img src="https://media.giphy.com/media/iY8CRBdQXODJSCERIr/giphy.gif" width="30px">&nbsp;***Connect with me ....*** <img src='https://raw.githubusercontent.com/ShahriarShafin/ShahriarShafin/main/Assets/handshake.gif' width="70px">
+<p>
+<a href="https://www.instagram.com/______palak_____gupta_______" target="_blank">
+<img src="https://img.shields.io/badge/instagram-%ff5851db.svg?color=f02b9a&style=for-the-badge&logo=instagram&logoColor=white" t=instagram style="margin-bottom: 5px;" />
+</a>
+<a href="https://www.facebook.com/profile.php?id=100053637504276" target="_blank">
+<img src="https://img.shields.io/badge/Messenger-00B2FF?style=for-the-badge&logo=messenger&logoColor=white"  style="margin-bottom: 5px;" />
+</a>
+<a href="https://www.linkedin.com/in/palak-gupta-40214a21b/" target="_blank">
+<img src=https://img.shields.io/badge/linkedin-%2300acee.svg?color=405DE6&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
+</a>
+
+</p>
+
+ <hr>
   </body>
 </html>
